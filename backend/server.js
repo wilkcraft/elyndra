@@ -4,16 +4,18 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 const app = express();
+const cors = require("cors");
 
 // ---- Configuración desde .env (con valores por defecto de respaldo) ----
-const PORT = parseInt(process.env.PORT, 10) || 4090;
-const HOST = process.env.HOST || "127.0.0.1";
+const PORT = parseInt(process.env.PORT, 10) || 8080;
+const HOST = process.env.HOST || "0.0.0.0";
 const DATA_FILE = path.join(__dirname, process.env.DATA_FILE || "ideas.json");
 const MAX_NAME_LENGTH = parseInt(process.env.MAX_NAME_LENGTH, 10) || 40;
 const MAX_IDEA_LENGTH = parseInt(process.env.MAX_IDEA_LENGTH, 10) || 300;
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
 app.use(express.json());
+app.use(cors({ origin: "https://elyndra.wilkcraft.work" }));
 
 // Cola simple para serializar escrituras y evitar corromper el JSON
 let writeQueue = Promise.resolve();

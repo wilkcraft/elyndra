@@ -1,0 +1,4374 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El secreto de Elyndra — Web oficial</title>
+    <link rel="icon" href="elyndra-logo.png" sizes="any" />
+    <link rel="icon" href="elyndra-logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="elyndra-logo.png" />
+    <link rel="icon" href="elyndra-logo.png" sizes="any" />
+    <link rel="icon" href="elyndra-logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="elyndra-logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Open Graph -->
+    <meta property="og:title" content="El secreto de Elyndra — Web oficial" />
+    <meta
+      name="description"
+      content="Web oficial de El secreto de Elyndra, novela de fantasía de Miguel Vallejo Garijo."
+    />
+    <meta
+      property="og:description"
+      content="Web oficial de El secreto de Elyndra, novela de fantasía de Miguel Vallejo Garijo."
+    />
+    <meta
+      property="og:image"
+      content="https://elyndra.wilkcraft.work/elyndra-logo.png"
+    />
+    <meta property="og:url" content="https://elyndra.wilkcraft.work/" />
+    <link rel="canonical" href="https://elyndra.wilkcraft.work/" />
+    <meta property="og:type" content="website" />
+    <meta name="keywords" content="elyndra, libro, fantasía" />
+    <meta name="author" content="Wilkcraft" />
+    <meta name="robots" content="index, follow" />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("elyndra-theme");
+          var theme =
+            saved ||
+            (window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: light)").matches
+              ? "light"
+              : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+        try {
+          var spoilerSeen = localStorage.getItem("elyndra-spoiler-seen");
+          if (!spoilerSeen) {
+            document.documentElement.classList.add("spoiler-pending");
+          }
+        } catch (e) {
+          document.documentElement.classList.add("spoiler-pending");
+        }
+      })();
+    </script>
+    <style>
+      :root,
+      [data-theme="dark"] {
+        --bg: #0a1420;
+        --bg-alt: #0f1d2e;
+        --panel: #101f30;
+        --panel-2: #14263a;
+        --hairline: rgba(168, 216, 234, 0.14);
+        --ice: #a8d8ea;
+        --frost: #5aa9d6;
+        --frost-dim: #3d7ba3;
+        --gold: #e3b23c;
+        --gold-dim: #b98c2c;
+        --ember: #e2673a;
+        --life: #6fbf73;
+        --mind: #a66fe0;
+        --parchment: #efe6d3;
+        --ink: #1b1a17;
+        --text: #dce9f0;
+        --text-dim: #8fa8b8;
+        --nav-grad-1: rgba(10, 20, 32, 0.92);
+        --nav-grad-2: rgba(10, 20, 32, 0.55);
+        --hero-grad-1: #0a1420;
+        --hero-grad-2: #0d1a29;
+        --hero-grad-3: #0a1420;
+        --hero-title-start: #f2fbff;
+        --wheel-outline: rgba(168, 216, 234, 0.18);
+        --particle-color: #cfe9f7;
+        --gold-accent: #e3b23c;
+        --serif: "Spectral", Georgia, serif;
+        --display: "Cinzel", serif;
+        --ui: "Jost", sans-serif;
+      }
+      [data-theme="light"] {
+        --bg: #eef5f9;
+        --bg-alt: #e2edf3;
+        --panel: #ffffff;
+        --panel-2: #eaf1f5;
+        --hairline: rgba(20, 50, 70, 0.13);
+        --ice: #143c52;
+        --frost: #2f7fb0;
+        --frost-dim: #1f5d82;
+        --gold: #a8721c;
+        --gold-dim: #8c5f18;
+        --ember: #c14b26;
+        --life: #2f7a34;
+        --mind: #6b3fae;
+        --parchment: #efe6d3;
+        --ink: #1b1a17;
+        --text: #16232c;
+        --text-dim: #4d6473;
+        --nav-grad-1: rgba(238, 245, 249, 0.92);
+        --nav-grad-2: rgba(238, 245, 249, 0.55);
+        --hero-grad-1: #eef5f9;
+        --hero-grad-2: #e4eef4;
+        --hero-grad-3: #eef5f9;
+        --hero-title-start: #0c2635;
+        --wheel-outline: rgba(20, 50, 70, 0.18);
+        --particle-color: #2f7fb0;
+        --gold-accent: #e3b23c;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      @font-face {
+        font-family: "Karthoriano";
+        src: url("fonts/Karthoriano.ttf") format("truetype");
+        font-display: swap;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      html.map-open {
+        overscroll-behavior-x: none;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--serif);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+        transition:
+          background-color 0.35s ease,
+          color 0.35s ease;
+      }
+      a {
+        color: inherit;
+      }
+      ::selection {
+        background: var(--gold);
+        color: var(--ink);
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--display);
+        letter-spacing: 0.02em;
+        margin: 0;
+        color: var(--ice);
+        font-weight: 700;
+      }
+      .eyebrow {
+        font-family: var(--ui);
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        font-size: 0.72rem;
+        color: var(--gold);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.7em;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 2em;
+        height: 1px;
+        background: var(--gold-dim);
+        display: inline-block;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 clamp(20px, 4vw, 48px);
+      }
+      section {
+        position: relative;
+      }
+      /* ---------- Reduced motion ---------- */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      /* ---------- Spoiler gate ---------- */
+      html.spoiler-pending #mainContent {
+        display: none;
+      }
+      html:not(.spoiler-pending) #spoilerGate {
+        display: none;
+      }
+      #spoilerGate {
+        padding: min(14vw, 120px) 0 min(10vw, 90px);
+      }
+      .spoiler-box {
+        max-width: 620px;
+        margin: 0 auto;
+        text-align: center;
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        padding: 48px clamp(24px, 5vw, 56px);
+      }
+      .spoiler-box .eyebrow {
+        justify-content: center;
+      }
+      .spoiler-icon {
+        font-size: 2.2rem;
+        color: var(--gold);
+        margin-bottom: 14px;
+      }
+      .spoiler-box h2 {
+        font-size: clamp(1.7rem, 4vw, 2.3rem);
+        margin: 14px 0 18px;
+      }
+      .spoiler-box p {
+        color: var(--text-dim);
+        font-size: 1rem;
+        max-width: 46ch;
+        margin: 0 auto 30px;
+      }
+      /* ---------- Nav ---------- */
+      header.site-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+        background: linear-gradient(
+          to bottom,
+          var(--nav-grad-1),
+          var(--nav-grad-2)
+        );
+        border-bottom: 1px solid var(--hairline);
+        transition:
+          background 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .nav-inner {
+        position: relative;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 14px clamp(20px, 4vw, 48px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand {
+        font-family: var(--display);
+        font-size: 1.05rem;
+        letter-spacing: 0.08em;
+        color: var(--ice);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand svg {
+        width: 22px;
+        height: 22px;
+        flex: none;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: clamp(10px, 2vw, 26px);
+        position: relative;
+      }
+      nav.links {
+        display: flex;
+        gap: clamp(10px, 2vw, 26px);
+        font-family: var(--ui);
+        font-size: 0.85rem;
+        letter-spacing: 0.02em;
+      }
+      nav.links a {
+        text-decoration: none;
+        color: var(--text-dim);
+        transition: color 0.25s ease;
+        white-space: nowrap;
+      }
+      nav.links a:hover,
+      nav.links a:focus-visible {
+        color: var(--gold);
+      }
+      .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: none;
+        border: 1px solid var(--hairline);
+        color: var(--ice);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition:
+          border-color 0.25s ease,
+          color 0.25s ease,
+          transform 0.25s ease;
+      }
+      .theme-toggle:hover {
+        border-color: var(--frost);
+        color: var(--gold);
+        transform: translateY(-2px);
+      }
+      .theme-toggle i {
+        display: none;
+        pointer-events: none;
+      }
+      html[data-theme="dark"] .theme-toggle .icon-sun {
+        display: inline-block;
+      }
+      html[data-theme="light"] .theme-toggle .icon-moon {
+        display: inline-block;
+      }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: 1px solid var(--hairline);
+        color: var(--ice);
+        border-radius: 6px;
+        padding: 6px 10px;
+        font-family: var(--ui);
+        cursor: pointer;
+      }
+      /* ---------- Hero ---------- */
+      .hero {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 120px 20px 80px;
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background:
+          radial-gradient(
+            ellipse 60% 45% at 50% 12%,
+            rgba(90, 169, 214, 0.28),
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 70% 60% at 50% 100%,
+            rgba(166, 111, 224, 0.1),
+            transparent 60%
+          ),
+          linear-gradient(
+            180deg,
+            var(--hero-grad-1) 0%,
+            var(--hero-grad-2) 55%,
+            var(--hero-grad-3) 100%
+          );
+        transition: background 0.35s ease;
+      }
+      .hero-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-bottom: 22px;
+      }
+      #snow {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+      }
+      .hero-eyebrow {
+        justify-content: center;
+        margin-bottom: 22px;
+      }
+      .hero-logo {
+        width: 60px;
+        margin: 0;
+        display: block;
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 7vw, 5rem);
+        line-height: 1.05;
+        margin: 0;
+        max-width: none;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        background: linear-gradient(
+          180deg,
+          var(--hero-title-start) 0%,
+          var(--ice) 55%,
+          var(--frost) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 60px rgba(90, 169, 214, 0.25);
+      }
+      .hero .subtitle {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+        color: var(--text-dim);
+        max-width: 46ch;
+        margin: 0 auto 14px;
+      }
+      .hero .byline {
+        font-family: var(--ui);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        color: var(--gold);
+        margin-bottom: 34px;
+      }
+      .hero-category {
+        font-family: var(--ui);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--gold);
+        font-size: 0.8rem;
+      }
+      .hero-author {
+        font-family: var(--ui);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--gold);
+        font-size: 0.8rem;
+      }
+      .cta-row {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn {
+        font-family: var(--ui);
+        font-size: 0.92rem;
+        letter-spacing: 0.03em;
+        text-decoration: none;
+        padding: 13px 28px;
+        border-radius: 2px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.25s ease;
+        cursor: pointer;
+        border: 1px solid transparent;
+      }
+      .btn-primary {
+        background: var(--gold-accent);
+        color: #241a05;
+        font-weight: 600;
+        box-shadow: 0 8px 24px -8px rgba(227, 178, 60, 0.55);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px -8px rgba(227, 178, 60, 0.7);
+      }
+      .btn-ghost {
+        border-color: var(--hairline);
+        color: var(--ice);
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .btn-ghost:hover {
+        border-color: var(--frost);
+        color: var(--ice);
+        transform: translateY(-2px);
+      }
+      .scroll-cue {
+        position: absolute;
+        bottom: 26px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--ui);
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      .arrow-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      .arrow-down {
+        display: block;
+        transform-origin: center;
+        animation: bounceArrow 2s ease-in-out infinite;
+      }
+      @keyframes bounceArrow {
+        0%,
+        100% {
+          transform: translateY(0);
+          opacity: 0.5;
+        }
+        50% {
+          transform: translateY(8px);
+          opacity: 1;
+        }
+      }
+      /* ---------- Generic section chrome ---------- */
+      .section {
+        padding: min(14vw, 120px) 0 min(10vw, 90px);
+      }
+      .section-head {
+        max-width: 640px;
+        margin-bottom: 52px;
+      }
+      .section-head h2 {
+        font-size: clamp(1.9rem, 4vw, 2.7rem);
+        margin-top: 14px;
+      }
+      .section-head p {
+        color: var(--text-dim);
+        margin-top: 16px;
+        font-size: 1.02rem;
+      }
+      .divider {
+        height: 1px;
+        background: linear-gradient(90deg, var(--hairline), transparent);
+        margin: 0 auto;
+      }
+      /* ---------- Synopsis ---------- */
+      .synopsis-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 56px;
+        align-items: start;
+      }
+      @media (max-width: 860px) {
+        .synopsis-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .synopsis-grid p {
+        font-size: 1.08rem;
+        color: var(--text);
+      }
+      .synopsis-grid p + p {
+        margin-top: 1.1em;
+      }
+      .drop::first-letter {
+        font-family: var(--display);
+        font-size: 3.4rem;
+        float: left;
+        line-height: 0.8;
+        padding: 0.08em 0.12em 0 0;
+        color: var(--gold);
+      }
+      .fact-card {
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        padding: 26px 28px;
+        transition:
+          background-color 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .fact-card h4 {
+        font-family: var(--ui);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.16em;
+        color: var(--gold);
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
+      .fact-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-family: var(--ui);
+        font-size: 0.92rem;
+      }
+      .fact-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px dashed var(--hairline);
+        color: var(--text-dim);
+      }
+      .fact-list li:last-child {
+        border-bottom: none;
+      }
+      .fact-list span:last-child {
+        color: var(--ice);
+        text-align: right;
+      }
+      /* ---------- Map / Kingdoms ---------- */
+      .kingdom-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      @media (max-width: 900px) {
+        .kingdom-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .kingdom-grid {
+          grid-template-columns: 1fr;
+        }
+        .char-modal-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .kingdom {
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        padding: 24px 22px 22px;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          background-color 0.35s ease;
+      }
+      .kingdom:hover {
+        transform: translateY(-4px);
+        border-color: var(--frost-dim);
+      }
+      .kingdom .tag {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-family: var(--ui);
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        border-bottom-left-radius: 6px;
+      }
+      .kingdom h3 {
+        font-size: 1.28rem;
+        margin-bottom: 6px;
+        margin-top: 10px;
+      }
+      .kingdom .region {
+        font-family: var(--ui);
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 12px;
+        display: block;
+      }
+      .kingdom p {
+        color: var(--text-dim);
+        font-size: 0.94rem;
+        margin: 0;
+      }
+      .k-nivalis .tag {
+        background: rgba(90, 169, 214, 0.18);
+        color: var(--ice);
+      }
+      .k-verdania .tag {
+        background: rgba(111, 191, 115, 0.18);
+        color: var(--life);
+      }
+      .k-rokan .tag {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-dim);
+      }
+      .k-solkar .tag {
+        background: rgba(227, 178, 60, 0.18);
+        color: var(--gold);
+      }
+      .k-maral .tag {
+        background: rgba(166, 111, 224, 0.16);
+        color: var(--mind);
+      }
+      .k-confin .tag {
+        background: rgba(226, 103, 58, 0.18);
+        color: var(--ember);
+      }
+      /* ---------- Powers wheel (signature element) ---------- */
+      .powers-wrap {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      @media (max-width: 900px) {
+        .powers-wrap {
+          grid-template-columns: 1fr;
+        }
+      }
+      .wheel-stage {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        aspect-ratio: 1/1;
+      }
+      .wheel-stage svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .wheel-seg {
+        cursor: pointer;
+        stroke: var(--bg);
+        transition:
+          opacity 0.25s ease,
+          filter 0.25s ease,
+          stroke 0.35s ease;
+        opacity: 0.82;
+      }
+      .wheel-seg:hover,
+      .wheel-seg.active {
+        opacity: 1;
+        filter: drop-shadow(0 0 10px currentColor);
+      }
+      .wheel-seg-text {
+        font-size: 16px;
+        pointer-events: none;
+      }
+      .wheel-center {
+        font-family: var(--display);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        fill: var(--ice);
+      }
+      .power-detail {
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        padding: 30px 32px;
+        min-height: 250px;
+        transition:
+          background-color 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .power-detail .p-eyebrow {
+        font-family: var(--ui);
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .power-detail h3 {
+        font-size: 1.6rem;
+        margin-bottom: 14px;
+      }
+      .power-detail p {
+        color: var(--text-dim);
+        margin: 0 0 10px;
+      }
+      .power-detail .p-row {
+        display: flex;
+        gap: 10px;
+        font-family: var(--ui);
+        font-size: 0.82rem;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+      .p-chip {
+        border: 1px solid var(--hairline);
+        border-radius: 20px;
+        padding: 5px 14px;
+        color: var(--text-dim);
+      }
+      .hint {
+        font-family: var(--ui);
+        font-size: 0.78rem;
+        color: var(--text-dim);
+        margin-top: 14px;
+      }
+      /* ---------- Characters ---------- */
+      .char-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      @media (max-width: 1000px) {
+        .char-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 540px) {
+        .char-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .char-card {
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          background-color 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .char-portrait {
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .char-portrait svg {
+        width: 74px;
+        height: 74px;
+      }
+      .char-body {
+        padding: 18px 20px 22px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .char-body h3 {
+        font-size: 1.15rem;
+      }
+      .char-role {
+        font-family: var(--ui);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin: 6px 0 12px;
+      }
+      .char-body p {
+        color: var(--text-dim);
+        font-size: 0.9rem;
+        margin: 0;
+        flex: 1;
+      }
+      .char-mark {
+        font-family: var(--ui);
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px dashed var(--hairline);
+        color: var(--text-dim);
+      }
+      .char-mark b {
+        color: var(--ice);
+        font-weight: 600;
+      }
+      .char-modal-box {
+        max-width: 680px;
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        padding-top: 44px;
+      }
+      .char-modal-scroll {
+        overflow-y: auto;
+        flex: 1 1 auto;
+        min-height: 0;
+        padding-right: 6px;
+      }
+      .char-modal-grid {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 24px;
+        align-items: center;
+      }
+      .char-modal-img {
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid var(--hairline);
+        cursor: zoom-in;
+        transition: opacity 0.2s ease;
+      }
+      .char-modal-img:hover {
+        opacity: 0.85;
+      }
+      .char-modal-img-hint {
+        font-family: var(--ui);
+        font-size: 0.7rem;
+        color: var(--text-dim);
+        text-align: center;
+        margin-top: 8px;
+      }
+      .char-modal-grid h3 {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+      }
+      .info-tooltip-wrap {
+        position: absolute;
+        top: 10px;
+        left: 14px;
+        z-index: 5;
+      }
+      .info-tooltip-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid var(--hairline);
+        background: var(--panel);
+        color: var(--ice);
+        font-family: var(--ui);
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          border-color 0.2s ease,
+          color 0.2s ease;
+        padding: 0;
+      }
+      .info-tooltip-btn:hover,
+      .info-tooltip-wrap.open .info-tooltip-btn {
+        border-color: var(--frost);
+        color: var(--gold);
+      }
+      .info-tooltip-popup {
+        position: absolute;
+        top: 36px;
+        left: 0;
+        width: 260px;
+        max-width: 70vw;
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-family: var(--ui);
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        line-height: 1.4;
+        text-align: left;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4px);
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
+        pointer-events: none;
+      }
+      .info-tooltip-wrap:hover .info-tooltip-popup,
+      .info-tooltip-wrap.open .info-tooltip-popup {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .char-modal-img-wrap {
+        position: relative;
+      }
+      .char-modal-grid p {
+        color: var(--text-dim);
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
+      .char-card[data-character] {
+        cursor: pointer;
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease;
+      }
+      .char-card[data-character]:hover {
+        transform: translateY(-4px);
+        border-color: var(--frost-dim);
+      }
+      .char-card[data-character] {
+        position: relative;
+      }
+      .char-hover-hint {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 16px;
+        background: rgba(10, 20, 32, 0.82);
+        color: var(--ice);
+        font-family: var(--ui);
+        font-size: 0.85rem;
+        letter-spacing: 0.03em;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        z-index: 2;
+        border-radius: 6px;
+      }
+      .char-hover-hint i {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+        color: var(--gold);
+      }
+      .char-card[data-character]:hover .char-hover-hint,
+      .char-card[data-character]:focus-visible .char-hover-hint {
+        opacity: 1;
+      }
+      /* ---------- Timeline / chapters ---------- */
+      .arc {
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        margin-bottom: 14px;
+        background: var(--panel);
+        overflow: hidden;
+        transition:
+          background-color 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .arc-head {
+        width: 100%;
+        background: none;
+        border: none;
+        color: var(--text);
+        text-align: left;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        cursor: pointer;
+        font-family: var(--ui);
+      }
+      .arc-head:hover {
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .arc-num {
+        font-family: var(--display);
+        color: var(--gold);
+        font-size: 1.1rem;
+        margin-right: 14px;
+      }
+      .arc-title {
+        font-family: var(--display);
+        color: var(--ice);
+        font-size: 1.15rem;
+        letter-spacing: 0.02em;
+        flex: 1;
+      }
+      .arc-range {
+        font-family: var(--ui);
+        color: var(--text-dim);
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .arc-chevron {
+        transition: transform 0.3s ease;
+        color: var(--text-dim);
+        flex: none;
+      }
+      .arc.open .arc-chevron {
+        transform: rotate(135deg);
+      }
+      .arc-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+      .arc.open .arc-body {
+        max-height: 1400px;
+      }
+      .arc-inner {
+        padding: 0 24px 22px;
+      }
+      .arc-summary {
+        color: var(--text-dim);
+        font-size: 0.94rem;
+        margin: 0 0 18px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .chapter-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 24px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      @media (max-width: 640px) {
+        .chapter-list {
+          grid-template-columns: 1fr;
+        }
+      }
+      .chapter-list li {
+        font-size: 0.9rem;
+        color: var(--text-dim);
+        padding: 5px 0;
+        display: flex;
+        gap: 8px;
+      }
+      .chapter-list li b {
+        color: var(--ice);
+        font-weight: 600;
+        min-width: 1.6em;
+      }
+      /* ---------- Quote band ---------- */
+      .quote-band {
+        padding: 100px 0;
+        text-align: center;
+        position: relative;
+      }
+      .quote-band::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 60% 80% at 50% 50%,
+          rgba(166, 111, 224, 0.1),
+          transparent 70%
+        );
+      }
+      .quote-band blockquote {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        max-width: 30ch;
+        margin: 0 auto 20px;
+        color: var(--ice);
+        position: relative;
+        z-index: 1;
+      }
+      .quote-band cite {
+        font-family: var(--ui);
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-style: normal;
+      }
+      /* ---------- Lore / appendix ---------- */
+      .lore-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+      @media (max-width: 760px) {
+        .lore-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .lore-card {
+        background:
+          linear-gradient(180deg, rgba(239, 230, 211, 0.03), transparent),
+          var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        padding: 24px 26px;
+        transition:
+          background-color 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .lore-card h4 {
+        font-family: var(--display);
+        font-size: 1.1rem;
+        color: var(--ice);
+        margin-bottom: 10px;
+      }
+      .lore-card p {
+        color: var(--text-dim);
+        font-size: 0.93rem;
+        margin: 0;
+      }
+      .lore-full {
+        grid-column: 1/-1;
+      }
+      .karthor-tool {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      @media (max-width: 760px) {
+        .karthor-tool {
+          grid-template-columns: 1fr;
+        }
+      }
+      .karthor-box {
+        background: var(--bg);
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        padding: 18px 20px;
+      }
+      .karthor-box label {
+        display: block;
+        font-family: var(--ui);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold);
+        margin-bottom: 10px;
+      }
+      #karthorInput {
+        width: 100%;
+        min-height: 110px;
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        padding: 12px;
+        color: var(--text);
+        font-family: var(--serif);
+        font-size: 1rem;
+        resize: vertical;
+      }
+      #karthorOutput {
+        min-height: 110px;
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        padding: 12px;
+        color: var(--ice);
+        font-family: "Karthoriano", serif;
+        font-size: 1.4rem;
+        letter-spacing: 0.05em;
+        line-height: 1.4;
+        word-break: break-word;
+        white-space: pre-wrap;
+      }
+      .glossary {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .g-term {
+        font-family: var(--ui);
+        font-size: 0.78rem;
+        border: 1px solid var(--hairline);
+        border-radius: 20px;
+        padding: 6px 14px;
+        color: var(--text-dim);
+        position: relative;
+        cursor: default;
+      }
+      .g-term:hover {
+        color: var(--ice);
+        border-color: var(--frost-dim);
+      }
+      .format-tabs {
+        display: inline-flex;
+        gap: 6px;
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 30px;
+        padding: 4px;
+        margin-bottom: 20px;
+      }
+      .format-tab-btn {
+        font-family: var(--ui);
+        font-size: 0.82rem;
+        letter-spacing: 0.03em;
+        border: none;
+        background: none;
+        color: var(--text-dim);
+        padding: 9px 20px;
+        border-radius: 24px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition:
+          background-color 0.25s ease,
+          color 0.25s ease;
+      }
+      .format-tab-btn i {
+        font-size: 0.9rem;
+      }
+      .format-tab-btn.active {
+        background: var(--gold-accent);
+        color: #241a05;
+        font-weight: 600;
+      }
+      .format-tab-btn:not(.active):hover {
+        color: var(--ice);
+      }
+      .buy-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 48px;
+        align-items: center;
+      }
+      @media (max-width: 860px) {
+        .buy-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .buy-cover {
+        position: relative;
+      }
+      .buy-cover img {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        display: block;
+        border-radius: 6px;
+        border: 1px solid var(--hairline);
+        box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+      }
+      .buy-info .fact-card {
+        margin-bottom: 24px;
+      }
+      .buy-cta {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .buy-note {
+        font-family: var(--ui);
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        margin-top: 14px;
+      }
+      /* ---------- Footer / CTA ---------- */
+      .final-cta {
+        text-align: center;
+        padding: 110px 0 60px;
+      }
+      .final-cta h2 {
+        font-size: clamp(1.9rem, 4.4vw, 2.9rem);
+        margin-bottom: 20px;
+      }
+      .final-cta p {
+        color: var(--text-dim);
+        max-width: 46ch;
+        margin: 0 auto 34px;
+      }
+      footer {
+        border-top: 1px solid var(--hairline);
+        padding: 36px 0 48px;
+      }
+      .footer-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+        font-family: var(--ui);
+        font-size: 0.8rem;
+        color: var(--text-dim);
+      }
+      .footer-credit {
+        justify-content: center;
+        text-align: center;
+      }
+      footer .brand {
+        font-size: 0.95rem;
+      }
+      footer nav {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      footer nav a {
+        text-decoration: none;
+        color: var(--text-dim);
+      }
+      footer nav a:hover {
+        color: var(--gold);
+      }
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--panel-2);
+        border-radius: 6px;
+      }
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      [data-reveal].in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .contact-email {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.25s ease;
+      }
+      .contact-email:hover {
+        color: var(--gold);
+      }
+      .wilkcraft-link {
+        position: relative;
+        color: inherit;
+        text-decoration: none;
+        font-weight: bold;
+        padding-bottom: 3px;
+        transition: color 0.25s ease;
+      }
+      /* Línea SIEMPRE visible */
+      .wilkcraft-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor; /* mismo color que el texto */
+        transition:
+          background-color 0.25s ease,
+          transform 0.35s ease;
+        transform-origin: center;
+      }
+      /* Animación al hacer hover */
+      .wilkcraft-link:hover::after {
+        transform: scaleX(1.2); /* pequeño efecto animado */
+      }
+      .ideas-list {
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .idea-card {
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        padding: 18px 22px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        transition:
+          background-color 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .idea-card .idea-content {
+        flex: 1;
+      }
+      .idea-card .idea-name {
+        font-family: var(--ui);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 6px;
+      }
+      .idea-card .idea-text {
+        color: var(--text);
+        font-size: 0.98rem;
+      }
+      .idea-vote-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        background: none;
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        padding: 8px 14px;
+        color: var(--ice);
+        cursor: pointer;
+        font-family: var(--ui);
+        transition:
+          border-color 0.25s ease,
+          color 0.25s ease,
+          transform 0.25s ease;
+      }
+      .idea-vote-btn:hover:not(:disabled) {
+        border-color: var(--frost);
+        color: var(--gold);
+        transform: translateY(-2px);
+      }
+      .idea-vote-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .idea-vote-btn.voted {
+        border-color: var(--gold);
+        color: var(--gold);
+        background: rgba(227, 178, 60, 0.1);
+      }
+      .idea-vote-btn.voted .votes-count {
+        color: var(--gold);
+      }
+      .idea-vote-btn.own-idea {
+        cursor: not-allowed;
+      }
+      .idea-vote-btn.own-idea:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+        transform: none;
+      }
+      .idea-card {
+        position: relative;
+      }
+      @keyframes voteAutoPop {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(227, 178, 60, 0.55);
+        }
+        50% {
+          transform: scale(1.16);
+          box-shadow: 0 0 0 10px rgba(227, 178, 60, 0);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(227, 178, 60, 0);
+        }
+      }
+      .idea-vote-btn.auto-voted {
+        animation: voteAutoPop 0.7s ease;
+      }
+      @keyframes voteFloatUp {
+        0% {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -26px);
+        }
+      }
+      .vote-float {
+        position: absolute;
+        top: -6px;
+        right: 18px;
+        font-family: var(--ui);
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--gold);
+        pointer-events: none;
+        animation: voteFloatUp 0.9s ease forwards;
+      }
+      .idea-vote-btn .votes-count {
+        font-family: var(--display);
+        font-size: 1.1rem;
+        color: var(--ice);
+      }
+      .ideas-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        margin-top: 22px;
+        font-family: var(--ui);
+      }
+      .ideas-page-info {
+        color: var(--text-dim);
+        font-size: 0.85rem;
+      }
+      .idea-char-count {
+        text-align: right;
+        font-family: var(--ui);
+        font-size: 0.75rem;
+        color: var(--text-dim);
+        margin-top: 4px;
+      }
+      .idea-char-count.limit-reached {
+        color: var(--ember);
+      }
+
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 300;
+        padding: 20px;
+      }
+      #charImageOverlay {
+        z-index: 350;
+      }
+      .modal-overlay.open {
+        display: flex;
+      }
+      .modal-box {
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 8px;
+        padding: 32px;
+        max-width: 65%;
+        width: 100%;
+        position: relative;
+      }
+      .modal-box h3 {
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+      .modal-box label {
+        display: block;
+        font-family: var(--ui);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-dim);
+        margin: 14px 0 6px;
+      }
+      .modal-box input,
+      .modal-box textarea {
+        width: 100%;
+        background: var(--bg);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        padding: 10px 12px;
+        color: var(--text);
+        font-family: var(--serif);
+        font-size: 0.95rem;
+        resize: vertical;
+      }
+      .modal-box input:focus,
+      .modal-box textarea:focus {
+        outline: none;
+        border-color: var(--frost);
+      }
+      .modal-close {
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        background: none;
+        border: none;
+        color: var(--text-dim);
+        font-size: 1.4rem;
+        cursor: pointer;
+        line-height: 1;
+      }
+      .modal-close:hover {
+        color: var(--gold);
+      }
+      .idea-error {
+        color: var(--ember);
+        font-size: 0.85rem;
+        min-height: 1.2em;
+        margin-top: 10px;
+      }
+
+      .map-overlay {
+        backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.75);
+      }
+      .map-box {
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 8px;
+        padding: 16px;
+        width: 90vw;
+        height: 90vh;
+        max-width: 1400px;
+        position: relative;
+        display: flex;
+      }
+      .map-scroll-container {
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+        border-radius: 4px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .map-scroll-container.is-zoomed {
+        display: block;
+      }
+      .zoom-viewer-img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 4px;
+        cursor: zoom-in;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+      .zoom-viewer-img.zoomed {
+        cursor: zoom-out;
+      }
+      .zoom-viewer-img.panning {
+        cursor: grabbing !important;
+      }
+      .map-box .modal-close {
+        top: 10px;
+        right: 14px;
+        background: var(--panel);
+        border: 1px solid var(--hairline);
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+      body.no-scroll {
+        overflow: hidden;
+      }
+
+      .karthor-alphabet-toggle {
+        margin-top: 18px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: none;
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        padding: 12px 20px;
+        color: var(--ice);
+        font-family: var(--ui);
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition:
+          border-color 0.25s ease,
+          color 0.25s ease;
+      }
+      .karthor-alphabet-toggle:hover {
+        border-color: var(--frost);
+        color: var(--gold);
+      }
+      .karthor-alphabet-toggle .arrow-down-toggle {
+        transition: transform 0.3s ease;
+        flex: none;
+      }
+      .karthor-alphabet-toggle[aria-expanded="true"] .arrow-down-toggle {
+        transform: rotate(180deg);
+      }
+      .karthor-alphabet {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+      .karthor-alphabet.open {
+        max-height: 900px;
+      }
+      .karthor-alphabet-grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+        gap: 10px;
+      }
+      .karthor-letter {
+        background: var(--bg);
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        padding: 10px 6px 8px;
+        text-align: center;
+      }
+      .karthor-letter .rune {
+        display: block;
+        font-family: "Karthoriano", serif;
+        font-size: 1.5rem;
+        color: var(--ice);
+        line-height: 1.2;
+      }
+      .karthor-letter .letter {
+        display: block;
+        font-family: var(--ui);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-top: 4px;
+        letter-spacing: 0.04em;
+      }
+      @media (max-width: 760px) {
+        nav.links {
+          position: absolute; /* relativo a .nav-inner */
+          top: 100%; /* justo debajo del botón */
+          right: 0; /* alineado a la derecha */
+          left: auto; /* anula el left:0 */
+          width: auto; /* se ajusta al contenido */
+          min-width: 200px; /* ancho mínimo para no quedar muy estrecho */
+          background: var(--bg-alt);
+          flex-direction: column;
+          padding: 18px 24px;
+          gap: 16px;
+          border: 1px solid var(--hairline);
+          border-radius: 6px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+          transform-origin: top right;
+          transform: scaleY(0);
+          opacity: 0;
+          transition:
+            transform 0.25s ease,
+            opacity 0.25s ease;
+          pointer-events: none;
+          z-index: 200;
+        }
+        nav.links.open {
+          transform: scaleY(1);
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .nav-toggle {
+          display: inline-block;
+        }
+        .modal-box {
+          max-width: 90%;
+        }
+        .kingdom-grid {
+          grid-template-columns: 1fr;
+        }
+        .char-modal-grid {
+          grid-template-columns: 1fr;
+        }
+        .char-modal-scroll {
+          overflow-y: auto;
+          overflow-x: hidden;
+          flex: 1 1 auto;
+          min-height: 0;
+          padding-right: 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-nav">
+      <div class="nav-inner">
+        <a class="brand" href="#top">
+          <img
+            src="elyndra-logo.png"
+            alt="Elyndra"
+            style="height: 22px; width: auto; display: block"
+          />
+          Elyndra
+        </a>
+        <div class="nav-right">
+          <nav class="links" id="navlinks">
+            <a href="#comprar">Comprar</a>
+            <a href="#sinopsis">Sinopsis</a>
+            <a href="#mundo">El mundo</a>
+            <a href="#marcas">Las Marcas</a>
+            <a href="#personajes">Personajes</a>
+            <a href="#capitulos">Capítulos</a>
+            <a href="#lore">Enciclopedia</a>
+            <a href="#ideas">Ideas</a>
+          </nav>
+          <div class="nav-controls">
+            <button
+              class="theme-toggle"
+              id="themeToggle"
+              type="button"
+              aria-label="Cambiar entre modo claro y oscuro"
+              title="Cambiar tema"
+            >
+              <i class="fa-solid fa-sun icon-sun" aria-hidden="true"></i>
+              <i class="fa-solid fa-moon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              class="nav-toggle"
+              aria-expanded="false"
+              aria-controls="navlinks"
+              id="navBtn"
+            >
+              Menú
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="hero" id="top">
+      <canvas id="snow"></canvas>
+      <div class="hero-top">
+        <img class="hero-logo" src="elyndra-logo.png" alt="Elyndra" />
+        <span class="hero-category"> Novela de fantasía épica </span>
+        <h1>El secreto de Elyndra</h1>
+        <span class="hero-author"> Miguel Vallejo Garijo </span>
+      </div>
+      <p class="subtitle">
+        El mundo la encerró. El destino la marcó. Y un mundo la espera.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#sinopsis"> Descubre la historia </a>
+        <a class="btn btn-ghost" href="#personajes"> Conoce a los Marcados </a>
+      </div>
+      <div class="scroll-cue">
+        <span>Sigue el rastro</span>
+        <div class="arrow-container">
+          <svg
+            class="arrow-down"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--frost)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPRAR: siempre visible, incluso antes de aceptar el aviso de spoiler -->
+    <section class="section" id="comprar">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div class="eyebrow">Hazte con tu ejemplar</div>
+          <h2>Consigue El secreto de Elyndra</h2>
+          <p>
+            Disponible en formato digital para Kindle. Empieza el viaje de Ayla
+            hoy mismo.
+          </p>
+        </div>
+        <div class="format-tabs" role="tablist" aria-label="Formato del libro">
+          <button
+            type="button"
+            class="format-tab-btn active"
+            id="tabPaperback"
+            data-format="paperback"
+            role="tab"
+            aria-selected="true"
+          >
+            <i class="fa-solid fa-book"></i>
+            Tapa blanda
+          </button>
+          <button
+            type="button"
+            class="format-tab-btn"
+            id="tabKindle"
+            data-format="kindle"
+            role="tab"
+            aria-selected="false"
+          >
+            <i class="fa-solid fa-tablet-screen-button"></i>
+            Kindle
+          </button>
+        </div>
+        <div class="buy-grid">
+          <div class="buy-cover" data-reveal>
+            <img
+              src="elyndra-portada.png"
+              alt="Portada de El secreto de Elyndra"
+              id="buyCoverImg"
+            />
+          </div>
+          <div class="buy-info" data-reveal>
+            <div class="fact-card">
+              <h4>Detalles de la edición</h4>
+              <ul class="fact-list" id="buyFactList">
+                <li>
+                  <span>Formato</span
+                  ><span id="buyFormat">Edición tapa blanda</span>
+                </li>
+                <li><span>Precio</span><span id="buyPrice">11,87 €</span></li>
+                <li><span>Páginas</span><span id="buyPages">251</span></li>
+                <li>
+                  <span>Edad recomendada</span
+                  ><span id="buyAge">A partir de 12 años</span>
+                </li>
+                <li>
+                  <span>Idioma</span><span id="buyLanguage">Español</span>
+                </li>
+              </ul>
+            </div>
+            <div class="buy-cta">
+              <a
+                class="btn btn-primary"
+                id="buyCtaLink"
+                href="https://www.amazon.es/dp/B0HC48FK8D"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-amazon"></i>
+                <span id="buyCtaLabel">Comprar en Amazon</span>
+              </a>
+            </div>
+            <p class="buy-note" id="buyNote">
+              Edición física en tapa blanda, enviada directamente por Amazon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVISO DE SPOILER: solo se muestra la primera vez -->
+    <section class="section" id="spoilerGate">
+      <div class="wrap">
+        <div class="spoiler-box">
+          <div class="spoiler-icon">
+            <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+          </div>
+          <div class="eyebrow">Antes de continuar</div>
+          <h2>Alerta de spoiler</h2>
+          <p>
+            Esta web contiene detalles sobre el mundo, los personajes y la trama
+            de <i>El secreto de Elyndra</i>. Si prefieres descubrirlo todo por
+            ti mismo en la novela, quizá quieras esperar antes de seguir
+            explorando.
+          </p>
+          <button class="btn btn-primary" id="spoilerContinue" type="button">
+            Continuar de todas formas
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL: oculto hasta que se confirme el aviso de spoiler -->
+    <div id="mainContent">
+      <!-- SINOPSIS -->
+      <section class="section" id="sinopsis">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">La historia</div>
+            <h2>Diecisiete años de invierno, y luego el mundo entero</h2>
+            <p>
+              Sin adelantar el final: esto es lo que encontrarás en las primeras
+              páginas.
+            </p>
+          </div>
+          <div class="synopsis-grid">
+            <div data-reveal>
+              <p class="drop">
+                Ayla ha pasado diecisiete años en una torre de piedra, sin más
+                compañía que el silencio y el frío de sus muros. Es una prisión,
+                pero también su única protección. Su único vínculo con el
+                exterior son los libros que le hablan de paisajes imposibles y
+                gentes que nunca ha visto. Pero cuando una decisión impulsiva la
+                arroja a la inmensidad del mundo, descubre que la realidad es
+                mucho más compleja y peligrosa de lo que jamás imaginó.
+              </p>
+              <p>
+                En el vasto mundo de Elyndra, los Marcados —aquellos que nacen
+                con poderes de agua, fuego, tierra, aire, vida y mente— son
+                cazados, temidos o adorados. Ayla deberá aprender a sobrevivir
+                mientras oculta el poder que lleva en su piel. Pero no está
+                sola: en su camino encontrará aliados inesperados, cada uno con
+                sus propios secretos y heridas, que la ayudarán a comprender que
+                ser diferente no es una maldición, sino una oportunidad.
+              </p>
+              <p>
+                Sin embargo, una sombra se extiende sobre todos ellos. Alguien
+                busca el poder absoluto, y para conseguirlo está dispuesto a
+                rehacer el mundo. Ayla y sus compañeros deberán decidir si están
+                dispuestos a enfrentarse a esa oscuridad... o si dejarán que los
+                consuma. Porque el poder tiene un precio. Y la verdad, a veces,
+                es más peligrosa que la mentira.
+              </p>
+              <p>
+                <i>El secreto de Elyndra</i> es una novela de viaje, de amistad
+                forjada a fuego y hielo, y de lo que significa elegir quién eres
+                cuando el mundo ya ha decidido temerte.
+              </p>
+            </div>
+            <div class="fact-card" data-reveal>
+              <h4>Ficha de la novela</h4>
+              <ul class="fact-list">
+                <li><span>Autor</span><span>Miguel Vallejo Garijo</span></li>
+                <li><span>Género</span><span>Fantasía épica</span></li>
+                <li>
+                  <span>Extensión</span
+                  ><span>44 capítulos + prólogo y apéndice</span>
+                </li>
+                <li>
+                  <span>Protagonista</span><span>Ayla, Marcada del agua</span>
+                </li>
+                <li><span>Escenario</span><span>El mundo de Elyndra</span></li>
+                <li>
+                  <span>Temas centrales</span
+                  ><span>Miedo al diferente, libertad, sacrificio</span>
+                </li>
+                <li>
+                  <span>Compañero de viaje</span><span>Nórik, el lobo</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="wrap"><div class="divider"></div></div>
+      <!-- MUNDO -->
+      <section class="section" id="mundo">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">Geografía de Elyndra</div>
+            <h2>Un mundo, seis actitudes ante el don</h2>
+            <p>
+              Cada reino de Elyndra decidió, a su manera, qué hacer con quienes
+              nacen Marcados. Este es el mapa que Ayla recorre.
+            </p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap">
+            <button class="btn btn-ghost" id="openMapBtn" type="button">
+              <i class="fa-solid fa-map"></i> Ver el mapa de Elyndra
+            </button>
+            <a
+              class="btn btn-ghost"
+              href="elyndra-map.jpg"
+              download="mapa-elyndra.jpg"
+              title="Descargar mapa"
+            >
+              <i class="fa-solid fa-download"></i>
+            </a>
+          </div>
+          <div class="kingdom-grid">
+            <div class="kingdom k-nivalis" data-reveal>
+              <span class="tag">Sur · hielo eterno</span>
+              <span class="region">Punto de partida</span>
+              <h3>Nivalis</h3>
+              <p>
+                Reino de nieve perpetua donde Ayla nació y fue encerrada. Los
+                Marcados se ocultan o se destierran; el miedo se hereda como una
+                costumbre más.
+              </p>
+            </div>
+            <div class="kingdom k-verdania" data-reveal>
+              <span class="tag">Norte · bosque vivo</span>
+              <span class="region">Hogar de Kael</span>
+              <h3>Verdania</h3>
+              <p>
+                Bosques milenarios y ciudades construidas en la copa de árboles
+                gigantes, como Sylvaren. Aquí conviven la tolerancia y la
+                sospecha, a partes iguales.
+              </p>
+            </div>
+            <div class="kingdom k-rokan" data-reveal>
+              <span class="tag">Centro-norte · montaña</span>
+              <span class="region">Territorio hostil</span>
+              <h3>Rokan</h3>
+              <p>
+                Clanes de montaña, poco amigos de los Marcados. Entre sus picos
+                se esconde Aurethia, la primera gran biblioteca del conocimiento
+                de las Marcas.
+              </p>
+            </div>
+            <div class="kingdom k-solkar" data-reveal>
+              <span class="tag">Oeste · desierto</span>
+              <span class="region">El tramo final</span>
+              <h3>Solkar</h3>
+              <p>
+                Arena, oasis-mercado y una tolerancia que depende del comercio
+                más que de la compasión. Aquí yace Karthor, la ciudad muerta, y
+                más allá, el Confín.
+              </p>
+            </div>
+            <div class="kingdom k-maral" data-reveal>
+              <span class="tag">Este · islas</span>
+              <span class="region">Mencionado, no explorado</span>
+              <h3>Maral</h3>
+              <p>
+                Islas comerciantes del extremo oriental, conocidas por sus
+                mercaderes y sus historias de dragones marinos. Elyndra guarda
+                aún mucho por descubrir.
+              </p>
+            </div>
+            <div class="kingdom k-confin" data-reveal>
+              <span class="tag">Más allá de Solkar</span>
+              <span class="region">Territorio de leyenda</span>
+              <h3>El Confín</h3>
+              <p>
+                Una región donde, según los relatos, las reglas de la naturaleza
+                dejan de cumplirse. Pocos hablan de él con detalle. Menos aún
+                han vuelto.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="wrap"><div class="divider"></div></div>
+      <!-- LAS MARCAS -->
+      <section class="section" id="marcas">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">El sistema de poder</div>
+            <h2>Seis fuerzas, seis Marcas, un precio</h2>
+            <p>
+              Los dioses moldearon Elyndra con agua, fuego, tierra, aire, vida y
+              mente — y dejaron fragmentos de ese poder entre los mortales. Toca
+              cada segmento de la rueda para descubrir cómo se manifiesta cada
+              don.
+            </p>
+            <p>
+              Las evoluciones que se detallan a continuación no son las únicas
+              posibles. El desarrollo del poder depende del entorno, la práctica
+              y las características individuales de cada Marcado, por lo que
+              pueden surgir variantes únicas o caminos alternativos.
+            </p>
+          </div>
+          <div class="powers-wrap">
+            <div class="wheel-stage">
+              <svg
+                viewBox="0 0 300 300"
+                id="wheel"
+                role="group"
+                aria-label="Rueda de los seis poderes"
+              >
+                <circle
+                  id="wheelCenterCircle"
+                  cx="150"
+                  cy="150"
+                  r="60"
+                  fill="none"
+                  style="stroke: var(--wheel-outline)"
+                />
+                <text x="150" y="146" text-anchor="middle" class="wheel-center">
+                  LAS SEIS
+                </text>
+                <text x="150" y="162" text-anchor="middle" class="wheel-center">
+                  MARCAS
+                </text>
+              </svg>
+            </div>
+            <div class="power-detail" id="powerDetail" data-reveal>
+              <!-- filled by JS -->
+            </div>
+          </div>
+          <p class="hint">
+            Consejo: puedes navegar la rueda también con el teclado (Tab +
+            Enter).
+          </p>
+        </div>
+      </section>
+      <div class="wrap"><div class="divider"></div></div>
+      <!-- PERSONAJES -->
+      <section class="section" id="personajes">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">Los Marcados</div>
+            <h2>Quiénes recorren Elyndra</h2>
+            <p>
+              Cuatro caminantes, un lobo con más secretos de los que aparenta, y
+              una sombra que los sigue desde el principio.
+            </p>
+          </div>
+          <div class="char-grid">
+            <div
+              class="char-card"
+              data-reveal
+              data-character="ayla"
+              tabindex="0"
+              role="button"
+              aria-haspopup="dialog"
+            >
+              <div
+                class="char-portrait"
+                style="
+                  background: radial-gradient(
+                    circle,
+                    rgba(90, 169, 214, 0.25),
+                    transparent 70%
+                  );
+                "
+              >
+                <svg viewBox="0 0 100 100">
+                  <path
+                    d="M50 10 L54 40 L84 40 L58 58 L68 88 L50 68 L32 88 L42 58 L16 40 L46 40 Z"
+                    fill="none"
+                    stroke="#a8d8ea"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <div class="char-body">
+                <h3>Ayla</h3>
+                <div class="char-role">Protagonista</div>
+                <p>
+                  Criada en soledad dentro de una torre de hielo en Nivalis.
+                  Escapa siguiendo a un lobo herido y descubre en el camino un
+                  mundo que temía y admiraba a partes iguales.
+                </p>
+                <div class="char-mark">Marca: <b>Agua</b></div>
+              </div>
+              <span class="char-hover-hint">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                Haz clic para ver su ficha completa e imagen
+              </span>
+            </div>
+            <div
+              class="char-card"
+              data-reveal
+              data-character="kael"
+              tabindex="0"
+              role="button"
+              aria-haspopup="dialog"
+            >
+              <div
+                class="char-portrait"
+                style="
+                  background: radial-gradient(
+                    circle,
+                    rgba(111, 191, 115, 0.25),
+                    transparent 70%
+                  );
+                "
+              >
+                <svg viewBox="0 0 100 100">
+                  <path
+                    d="M50 85 C30 85 20 65 25 45 C28 30 40 15 50 15 C60 15 72 30 75 45 C80 65 70 85 50 85 Z"
+                    fill="none"
+                    stroke="#6fbf73"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <div class="char-body">
+                <h3>Kael</h3>
+                <div class="char-role">Compañero de viaje</div>
+                <p>
+                  Marcado de la vida, huido de Sylvaren de niño para proteger a
+                  su familia. Busca desde entonces a sus padres, refugiados en
+                  una organización clandestina.
+                </p>
+                <div class="char-mark">Marca: <b>Vida</b></div>
+              </div>
+              <span class="char-hover-hint">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                Haz clic para ver su ficha completa e imagen
+              </span>
+            </div>
+            <div
+              class="char-card"
+              data-reveal
+              data-character="lyra"
+              tabindex="0"
+              role="button"
+              aria-haspopup="dialog"
+            >
+              <div
+                class="char-portrait"
+                style="
+                  background: radial-gradient(
+                    circle,
+                    rgba(166, 111, 224, 0.25),
+                    transparent 70%
+                  );
+                "
+              >
+                <svg viewBox="0 0 100 100">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="30"
+                    fill="none"
+                    stroke="#a66fe0"
+                    stroke-width="2"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="14"
+                    fill="none"
+                    stroke="#a66fe0"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <div class="char-body">
+                <h3>Lyra</h3>
+                <div class="char-role">Compañera de viaje</div>
+                <p>
+                  Rescatada de una posada donde era tratada como esclava, ignora
+                  durante mucho tiempo cuál es su don. Cuando por fin despierta,
+                  resulta ser uno de los más raros de todos.
+                </p>
+                <div class="char-mark">Marca: <b>Mente</b></div>
+              </div>
+              <span class="char-hover-hint">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                Haz clic para ver su ficha completa e imagen
+              </span>
+            </div>
+            <div
+              class="char-card"
+              data-reveal
+              data-character="daren"
+              tabindex="0"
+              role="button"
+              aria-haspopup="dialog"
+            >
+              <div
+                class="char-portrait"
+                style="
+                  background: radial-gradient(
+                    circle,
+                    rgba(200, 200, 200, 0.2),
+                    transparent 70%
+                  );
+                "
+              >
+                <svg viewBox="0 0 100 100">
+                  <polygon
+                    points="50,15 85,45 70,85 30,85 15,45"
+                    fill="none"
+                    stroke="#cfd6da"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <div class="char-body">
+                <h3>Daren</h3>
+                <div class="char-role">Compañero de viaje</div>
+                <p>
+                  Marcado de la tierra, lleva meses huyendo de una presencia que
+                  nunca deja de encontrarlo. Guarda un secreto —un fragmento de
+                  piedra— que resulta ser mucho más importante de lo que
+                  imagina.
+                </p>
+                <div class="char-mark">Marca: <b>Tierra</b></div>
+              </div>
+              <span class="char-hover-hint">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                Haz clic para ver su ficha completa e imagen
+              </span>
+            </div>
+            <div
+              class="char-card"
+              data-reveal
+              data-character="norik"
+              tabindex="0"
+              role="button"
+              aria-haspopup="dialog"
+            >
+              <div
+                class="char-portrait"
+                style="
+                  background: radial-gradient(
+                    circle,
+                    rgba(227, 178, 60, 0.22),
+                    transparent 70%
+                  );
+                "
+              >
+                <svg viewBox="0 0 100 100">
+                  <path
+                    d="M20 70 Q30 40 50 35 Q70 40 80 70 L65 65 L50 78 L35 65 Z"
+                    fill="none"
+                    stroke="#e3b23c"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <div class="char-body">
+                <h3>Nórik</h3>
+                <div class="char-role">El lobo</div>
+                <p>
+                  Encontrado herido en la nieve de Nivalis, se convierte en la
+                  primera compañía de Ayla. Con el tiempo se revela como algo
+                  mucho más antiguo que un simple animal.
+                </p>
+                <div class="char-mark">Naturaleza: <b>Alma guardiana</b></div>
+              </div>
+              <span class="char-hover-hint">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                Haz clic para ver su ficha completa e imagen
+              </span>
+            </div>
+            <div
+              class="char-card"
+              data-reveal
+              data-character="rastreador"
+              tabindex="0"
+              role="button"
+              aria-haspopup="dialog"
+            >
+              <div
+                class="char-portrait"
+                style="
+                  background: radial-gradient(
+                    circle,
+                    rgba(226, 103, 58, 0.22),
+                    transparent 70%
+                  );
+                "
+              >
+                <svg viewBox="0 0 100 100">
+                  <path
+                    d="M50 12 L58 40 L86 44 L62 60 L70 88 L50 70 L30 88 L38 60 L14 44 L42 40 Z"
+                    fill="none"
+                    stroke="#e2673a"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <div class="char-body">
+                <h3>El Rastreador</h3>
+                <div class="char-role">Antagonista</div>
+                <p>
+                  Una figura silenciosa que persigue Marcados por todo el
+                  continente. Nadie sabe su verdadero rostro, pero todos
+                  coinciden en algo: siempre encuentra a quien busca.
+                </p>
+                <div class="char-mark">Marca: <b>Fuego</b></div>
+              </div>
+              <span class="char-hover-hint">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                Haz clic para ver su ficha completa e imagen
+              </span>
+            </div>
+            <div class="char-card" data-reveal>
+              <div
+                class="char-portrait"
+                style="
+                  background: radial-gradient(
+                    circle,
+                    rgba(111, 191, 115, 0.18),
+                    transparent 70%
+                  );
+                "
+              >
+                <svg viewBox="0 0 100 100">
+                  <rect
+                    x="30"
+                    y="30"
+                    width="40"
+                    height="40"
+                    fill="none"
+                    stroke="#6fbf73"
+                    stroke-width="2"
+                    transform="rotate(45 50 50)"
+                  />
+                </svg>
+              </div>
+              <div class="char-body">
+                <h3>La Senda Verde</h3>
+                <div class="char-role">Organización</div>
+                <p>
+                  Red clandestina de refugios repartidos por todo el continente,
+                  dedicada a proteger a los Marcados. Dirigida por siete
+                  líderes, uno por cada poder y uno sin Marca alguna.
+                </p>
+                <div class="char-mark">Base: <b>Verdania, bajo tierra</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="wrap"><div class="divider"></div></div>
+      <!-- CAPITULOS -->
+      <section class="section" id="capitulos">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">Estructura de la novela</div>
+            <h2>El viaje, capítulo a capítulo</h2>
+            <p>
+              44 capítulos agrupados en seis tramos del camino. Pulsa cada tramo
+              para ver sus títulos — sin destripar los giros de la trama.
+            </p>
+          </div>
+          <div id="arcs">
+            <div class="arc" data-reveal>
+              <button class="arc-head" aria-expanded="false">
+                <span class="arc-num">I</span>
+                <span class="arc-title">Nivalis y la huida</span>
+                <span class="arc-range">Prólogo – Cap. 3</span>
+                <svg
+                  class="arc-chevron"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 3 L12 21 M3 12 L21 12"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                  />
+                </svg>
+              </button>
+              <div class="arc-body">
+                <div class="arc-inner">
+                  <p class="arc-summary">
+                    La torre, la Marca, la primera decisión: salir a buscar a un
+                    lobo herido en plena tormenta y no volver jamás.
+                  </p>
+                  <ul class="chapter-list">
+                    <li><b>P</b> El mundo de Elyndra</li>
+                    <li><b>1</b> La torre de hielo</li>
+                    <li><b>2</b> El mundo exterior</li>
+                    <li><b>3</b> Frostvik</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="arc" data-reveal>
+              <button class="arc-head" aria-expanded="false">
+                <span class="arc-num">II</span>
+                <span class="arc-title">Valdoren y los primeros pasos</span>
+                <span class="arc-range">Cap. 4 – 9</span>
+                <svg
+                  class="arc-chevron"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 3 L12 21 M3 12 L21 12"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                  />
+                </svg>
+              </button>
+              <div class="arc-body">
+                <div class="arc-inner">
+                  <p class="arc-summary">
+                    Ayla descubre su primera gran ciudad, encuentra a otro
+                    Marcado y aprende que el mundo no cabe en los libros de una
+                    torre.
+                  </p>
+                  <ul class="chapter-list">
+                    <li><b>4</b> Valdoren</li>
+                    <li><b>5</b> La ladrona del callejón</li>
+                    <li><b>6</b> Dos Marcados</li>
+                    <li><b>7</b> Desconfianza</li>
+                    <li><b>8</b> El camino</li>
+                    <li><b>9</b> Historias junto al fuego</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="arc" data-reveal>
+              <button class="arc-head" aria-expanded="false">
+                <span class="arc-num">III</span>
+                <span class="arc-title">Hacia Verdania</span>
+                <span class="arc-range">Cap. 10 – 19</span>
+                <svg
+                  class="arc-chevron"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 3 L12 21 M3 12 L21 12"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                  />
+                </svg>
+              </button>
+              <div class="arc-body">
+                <div class="arc-inner">
+                  <p class="arc-summary">
+                    Bandidos, una biblioteca perdida, una aldea con un secreto
+                    inquietante y la primera aparición de la sombra que
+                    perseguirá al grupo el resto del libro.
+                  </p>
+                  <ul class="chapter-list">
+                    <li><b>10</b> Sombras entre los árboles</li>
+                    <li><b>11</b> Lyra</li>
+                    <li><b>12</b> Tres caminantes</li>
+                    <li><b>13</b> Aurethia</li>
+                    <li><b>14</b> El lago escondido</li>
+                    <li><b>15</b> La Aldea Silenciosa</li>
+                    <li><b>16</b> Vientos de desconfianza</li>
+                    <li><b>17</b> El Marcado de Piedra</li>
+                    <li><b>18</b> El pueblo sin muros</li>
+                    <li><b>19</b> Sylvaren</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="arc" data-reveal>
+              <button class="arc-head" aria-expanded="false">
+                <span class="arc-num">IV</span>
+                <span class="arc-title">La Senda Verde</span>
+                <span class="arc-range">Cap. 20 – 27</span>
+                <svg
+                  class="arc-chevron"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 3 L12 21 M3 12 L21 12"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                  />
+                </svg>
+              </button>
+              <div class="arc-body">
+                <div class="arc-inner">
+                  <p class="arc-summary">
+                    Un reencuentro familiar, una organización secreta,
+                    entrenamiento intensivo y un ataque que cambia el rumbo de
+                    toda la historia.
+                  </p>
+                  <ul class="chapter-list">
+                    <li><b>20</b> El hogar perdido</li>
+                    <li><b>21</b> El Roble Colgante</li>
+                    <li><b>22</b> La Senda Verde</li>
+                    <li><b>23</b> Entrenamiento</li>
+                    <li><b>24</b> El ataque</li>
+                    <li><b>25</b> Las secuelas</li>
+                    <li><b>26</b> El consejo de guerra</li>
+                    <li><b>27</b> La despedida</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="arc" data-reveal>
+              <button class="arc-head" aria-expanded="false">
+                <span class="arc-num">V</span>
+                <span class="arc-title">El oeste y Karthor</span>
+                <span class="arc-range">Cap. 28 – 39</span>
+                <svg
+                  class="arc-chevron"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 3 L12 21 M3 12 L21 12"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                  />
+                </svg>
+              </button>
+              <div class="arc-body">
+                <div class="arc-inner">
+                  <p class="arc-summary">
+                    El rastro lleva a las llanuras y al desierto de Solkar,
+                    hasta una ciudad muerta que guarda respuestas que nadie
+                    quería encontrar.
+                  </p>
+                  <ul class="chapter-list">
+                    <li><b>28</b> El rastro del Rastreador</li>
+                    <li><b>29</b> El mapa de la discordia</li>
+                    <li><b>30</b> Las Llanuras de Ardak</li>
+                    <li><b>31</b> El oasis de las mentiras</li>
+                    <li><b>32</b> Perseguidos</li>
+                    <li><b>33</b> La red de sombras</li>
+                    <li><b>34</b> Confesiones nocturnas</li>
+                    <li><b>35</b> El desierto</li>
+                    <li><b>36</b> La ciudad muerta</li>
+                    <li><b>37</b> El guardián olvidado</li>
+                    <li><b>38</b> La segunda biblioteca</li>
+                    <li><b>39</b> La cacería</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="arc" data-reveal>
+              <button class="arc-head" aria-expanded="false">
+                <span class="arc-num">VI</span>
+                <span class="arc-title">La convergencia</span>
+                <span class="arc-range">Cap. 40 – 44</span>
+                <svg
+                  class="arc-chevron"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 3 L12 21 M3 12 L21 12"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                  />
+                </svg>
+              </button>
+              <div class="arc-body">
+                <div class="arc-inner">
+                  <p class="arc-summary">
+                    Un ejército se pone en marcha y todo lo que el grupo ha
+                    aprendido se pone a prueba en una única noche.
+                  </p>
+                  <ul class="chapter-list">
+                    <li><b>40</b> La guerra se avecina</li>
+                    <li><b>41</b> Hacia la convergencia</li>
+                    <li><b>42</b> La convergencia</li>
+                    <li><b>43</b> Lo que queda</li>
+                    <li><b>44</b> Un año después</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="quote-band" data-reveal>
+        <div class="wrap">
+          <blockquote>
+            “El poder no define quién eres. Las decisiones que tomas con él
+            definen tu verdadera naturaleza.”
+          </blockquote>
+          <cite>— Ayla, El secreto de Elyndra</cite>
+        </div>
+      </div>
+      <!-- LORE / APENDICE -->
+      <section class="section" id="lore">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">
+              Para quienes ya lo han leído (o quieren saberlo todo)
+            </div>
+            <h2>Enciclopedia de Elyndra</h2>
+            <p>
+              Un resumen del apéndice de la novela: el origen de las Marcas, sus
+              límites y los lugares que sostienen la historia.
+            </p>
+          </div>
+          <div class="lore-grid">
+            <div class="lore-card" data-reveal>
+              <h4>Origen de las Marcas</h4>
+              <p>
+                Según la leyenda fundacional, los dioses construyeron Elyndra
+                con seis fuerzas —agua, fuego, tierra, aire, vida y mente— y
+                repartieron fragmentos de ese poder entre los mortales al azar,
+                sin distinción de linaje ni fortuna. Así nacieron las Marcas.
+              </p>
+            </div>
+            <div class="lore-card" data-reveal>
+              <h4>El precio del don</h4>
+              <p>
+                Ningún poder es gratuito. Todo uso intenso cobra un precio:
+                agotamiento físico o mental, transferencia de heridas al
+                curador, pérdida temporal de control y, en los casos más
+                extremos, la muerte.
+              </p>
+            </div>
+            <div class="lore-card" data-reveal>
+              <h4>El Ritual de Transferencia</h4>
+              <p>
+                Un ritual antiguo, descubierto entre las ruinas de Karthor, que
+                permite arrebatar la Marca de una persona y transferirla a otra.
+                Está considerado el mayor crimen posible entre los Marcados.
+              </p>
+            </div>
+            <div class="lore-card" data-reveal>
+              <h4>El Séptimo Poder</h4>
+              <p>
+                Una mezcla corrupta de las seis fuerzas fundamentales,
+                mencionada en las inscripciones de Karthor como «el que no
+                debería haber existido». Reunir las seis Marcas en un solo
+                cuerpo humano tiene, según los textos antiguos, un precio
+                mortal.
+              </p>
+            </div>
+            <div class="lore-card lore-full" data-reveal>
+              <h4>Glosario rápido</h4>
+              <div class="glossary">
+                <span class="g-term"
+                  >Marca — sello de nacimiento que otorga poderes</span
+                >
+                <span class="g-term"
+                  >Marcado/a — persona que porta una Marca</span
+                >
+                <span class="g-term"
+                  >Convergencia — el momento en que las seis fuerzas podrían
+                  unirse en un solo ser</span
+                >
+                <span class="g-term"
+                  >Anfitrión — quien portaría las seis Marcas a la vez</span
+                >
+                <span class="g-term"
+                  >Alma guardiana — criatura antigua creada para vigilar el
+                  equilibrio</span
+                >
+                <span class="g-term"
+                  >Senda Verde — organización que protege a los Marcados</span
+                >
+              </div>
+            </div>
+            <div class="lore-card lore-full" data-reveal>
+              <h4>Karthor y la escritura karthoriana</h4>
+              <p>
+                Mucho antes de que existiera Aurethia, mucho antes de que un
+                solo Marcado hubiera nacido en Elyndra, llegó un pueblo que no
+                pertenecía a este mundo. Traían consigo seis fuerzas para
+                repartir entre los mortales: agua, fuego, tierra, aire, vida y
+                mente. Antes de repartirlas, tallaron su historia en piedra
+                negra, con líneas rectas que el tiempo no pudiera borrar. Esa
+                escritura se llamó <strong>karthoriano</strong>, y cada una de
+                sus 27 runas pertenece a una de las seis Marcas.
+              </p>
+              <p>
+                Construyeron Karthor, la ciudad que debía custodiar el reparto.
+                Pero hubo una séptima fuerza que nunca debió existir, y que
+                rompió el equilibrio de las otras seis. Karthor enmudeció para
+                siempre.
+              </p>
+              <p>
+                Casi toda su memoria se perdió con ella. La biblioteca de
+                Aurethia copió su diseño, su luz y su escritura, convirtiendo el
+                karthoriano en la lengua secreta de guardianes y bibliotecarios:
+                una advertencia grabada en piedra, dormida bajo la superficie,
+                esperando a que alguien con la Marca adecuada volviera a
+                necesitarla.
+              </p>
+              <div class="karthor-tool">
+                <div class="karthor-box">
+                  <label for="karthorInput">Escribe aquí</label>
+                  <textarea
+                    id="karthorInput"
+                    placeholder="Escribe algo..."
+                  ></textarea>
+                </div>
+                <div class="karthor-box">
+                  <label>Transcripción en karthoriano</label>
+                  <div id="karthorOutput"></div>
+                </div>
+              </div>
+
+              <button
+                class="karthor-alphabet-toggle"
+                id="karthorAlphabetToggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="karthorAlphabet"
+              >
+                <span>Ver el alfabeto karthoriano letra a letra</span>
+                <svg
+                  class="arrow-down-toggle"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
+              </button>
+              <div class="karthor-alphabet" id="karthorAlphabet">
+                <div
+                  class="karthor-alphabet-grid"
+                  id="karthorAlphabetGrid"
+                ></div>
+                <div class="karthor-alphabet-grid" id="karthorNumberGrid"></div>
+              </div>
+              <a
+                class="karthor-alphabet-toggle"
+                href="fonts/Karthoriano.ttf"
+                download="Karthoriano.ttf"
+              >
+                <span>Descargar la fuente karthoriana (.ttf)</span>
+                <i class="fa-solid fa-download" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="ideas">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">Participa</div>
+            <h2>Propón ideas para el próximo libro</h2>
+            <p>
+              ¿Tienes una idea para la próxima novela? Compártela aquí y vota
+              tus favoritas.
+            </p>
+          </div>
+
+          <button class="btn btn-primary" id="openIdeaForm" type="button">
+            <i class="fa-solid fa-lightbulb"></i> Proponer una idea
+          </button>
+
+          <div id="ideasList" class="ideas-list"></div>
+
+          <div class="ideas-pagination" id="ideasPagination">
+            <button class="btn btn-ghost" id="prevIdeas" type="button">
+              ‹ Anteriores
+            </button>
+            <span id="ideasPageInfo" class="ideas-page-info"></span>
+            <button class="btn btn-ghost" id="nextIdeas" type="button">
+              Siguientes ›
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div class="modal-overlay" id="ideaModalOverlay">
+        <div class="modal-box">
+          <button
+            class="modal-close"
+            id="closeIdeaForm"
+            type="button"
+            aria-label="Cerrar"
+          >
+            &times;
+          </button>
+          <h3>Comparte tu idea</h3>
+          <form id="ideaForm">
+            <label for="ideaName">Tu nombre (opcional)</label>
+            <input
+              type="text"
+              id="ideaName"
+              maxlength="40"
+              placeholder="Anónimo"
+            />
+
+            <label for="ideaText">Tu idea</label>
+            <textarea
+              id="ideaText"
+              maxlength="300"
+              rows="4"
+              required
+              placeholder="Cuéntanos tu idea..."
+            ></textarea>
+            <div class="idea-char-count" id="ideaCharCount">0 / 300</div>
+
+            <p class="idea-error" id="ideaError"></p>
+            <button class="btn btn-primary" type="submit">Enviar idea</button>
+          </form>
+        </div>
+      </div>
+      <section class="final-cta" data-reveal>
+        <div class="wrap">
+          <div class="eyebrow" style="justify-content: center">
+            Empieza el viaje
+          </div>
+          <h2>La torre de hielo te está esperando</h2>
+          <p>
+            Ayla no sabía qué había más allá de su ventana. Tú puedes
+            averiguarlo desde la primera página.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#comprar">Consigue tu ejemplar</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="wrap footer-inner">
+        <a class="brand" href="#top">Elyndra</a>
+        <nav>
+          <a href="#comprar">Comprar</a>
+          <a href="#sinopsis">Sinopsis</a>
+          <a href="#mundo">El mundo</a>
+          <a href="#personajes">Personajes</a>
+          <a href="#capitulos">Capítulos</a>
+          <a href="#lore">Enciclopedia</a>
+          <a href="#ideas">Ideas</a>
+        </nav>
+      </div>
+      <div class="wrap footer-inner footer-credit">
+        <span>
+          © 2026 Miguel Vallejo Garijo · Todos los derechos reservados ·
+          <a
+            href="mailto:contact@wilkcraft.work"
+            class="contact-email"
+            title="Contacta con el autor"
+            target="_blank"
+            rel="noopener noreferrer"
+            >contact@wilkcraft.work</a
+          >
+        </span>
+      </div>
+      <div class="wrap footer-inner footer-credit">
+        <p>
+          Developed by
+          <a
+            href="https://www.wilkcraft.work/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="wilkcraft-link"
+          >
+            Wilkcraft
+          </a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="modal-overlay map-overlay" id="mapOverlay">
+      <div class="map-box">
+        <button class="modal-close" id="closeMapBtn" aria-label="Cerrar">
+          &times;
+        </button>
+        <div class="map-scroll-container" id="mapScrollContainer">
+          <img
+            src="elyndra-map.jpg"
+            id="mapImage"
+            class="zoom-viewer-img"
+            alt="Mapa de Elyndra"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay map-overlay" id="charImageOverlay">
+      <div class="map-box">
+        <button class="modal-close" id="closeCharImageBtn" aria-label="Cerrar">
+          &times;
+        </button>
+        <div class="info-tooltip-wrap" id="charImageInfoWrap">
+          <button
+            type="button"
+            class="info-tooltip-btn"
+            id="charImageInfoBtn"
+            aria-label="Información sobre la imagen"
+          >
+            ?
+          </button>
+          <div class="info-tooltip-popup" id="charImageInfoPopup"></div>
+        </div>
+        <div class="map-scroll-container" id="charImageScrollContainer">
+          <img src="" id="charImagePreview" class="zoom-viewer-img" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="charModalOverlay">
+      <div class="modal-box char-modal-box">
+        <button
+          class="modal-close"
+          id="closeCharModal"
+          type="button"
+          aria-label="Cerrar"
+        >
+          &times;
+        </button>
+        <div class="char-modal-scroll">
+          <div class="char-modal-grid">
+            <div>
+              <div class="char-modal-img-wrap">
+                <img id="charModalImg" class="char-modal-img" src="" alt="" />
+                <div class="info-tooltip-wrap" id="charModalInfoWrap">
+                  <button
+                    type="button"
+                    class="info-tooltip-btn"
+                    id="charModalInfoBtn"
+                    aria-label="Información sobre la imagen"
+                  >
+                    ?
+                  </button>
+                  <div class="info-tooltip-popup" id="charModalInfoPopup"></div>
+                </div>
+              </div>
+              <p class="char-modal-img-hint">Toca la imagen para ampliarla</p>
+            </div>
+            <div>
+              <h3 id="charModalName"></h3>
+              <div class="char-role" id="charModalRole"></div>
+              <p id="charModalDesc"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        // ---- theme toggle ----
+        var themeToggle = document.getElementById("themeToggle");
+        function currentTheme() {
+          return document.documentElement.getAttribute("data-theme") || "dark";
+          particleColor = particleColorFor(next);
+          if (reduceMotion) {
+            draw();
+          }
+        }
+        function particleColorFor(theme) {
+          return theme === "light" ? "#2f7fb0" : "#cfe9f7";
+        }
+        var particleColor = particleColorFor(currentTheme());
+        if (themeToggle) {
+          themeToggle.addEventListener("click", function () {
+            var next = currentTheme() === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", next);
+            try {
+              localStorage.setItem("elyndra-theme", next);
+            } catch (e) {}
+            particleColor = particleColorFor(next);
+            if (reduceMotion) {
+              draw();
+            }
+          });
+        }
+        var pendingTarget = null;
+        var continueBtn = document.getElementById("spoilerContinue");
+        if (continueBtn) {
+          continueBtn.addEventListener("click", function () {
+            document.documentElement.classList.remove("spoiler-pending");
+            try {
+              localStorage.setItem("elyndra-spoiler-seen", "1");
+            } catch (e) {}
+            requestAnimationFrame(function () {
+              reveals.forEach(function (el) {
+                var r = el.getBoundingClientRect();
+                if (r.top < window.innerHeight && r.bottom > 0) {
+                  el.classList.add("in");
+                }
+              });
+              var target = document.getElementById(pendingTarget || "sinopsis");
+              if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+              }
+              pendingTarget = null;
+            });
+          });
+        }
+
+        var gatedSectionIds = [
+          "sinopsis",
+          "mundo",
+          "marcas",
+          "personajes",
+          "capitulos",
+          "lore",
+          "ideas",
+        ];
+        document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+          var targetId = a.getAttribute("href").slice(1);
+          if (gatedSectionIds.indexOf(targetId) === -1) return;
+          a.addEventListener("click", function (e) {
+            if (
+              document.documentElement.classList.contains("spoiler-pending")
+            ) {
+              e.preventDefault();
+              pendingTarget = targetId;
+              var gate = document.getElementById("spoilerGate");
+              if (gate) {
+                gate.scrollIntoView({ behavior: "smooth" });
+              }
+            }
+          });
+        });
+        // ---- nav toggle ----
+        var btn = document.getElementById("navBtn");
+        var links = document.getElementById("navlinks");
+        btn.addEventListener("click", function () {
+          var open = links.classList.toggle("open");
+          btn.setAttribute("aria-expanded", open);
+        });
+        links.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            links.classList.remove("open");
+            btn.setAttribute("aria-expanded", "false");
+          });
+        });
+        // ---- reveal on scroll ----
+        var reveals = document.querySelectorAll("[data-reveal]");
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        reveals.forEach(function (el) {
+          io.observe(el);
+        });
+        // ---- accordion chapters ----
+        document.querySelectorAll(".arc-head").forEach(function (h) {
+          h.addEventListener("click", function () {
+            var arc = h.parentElement;
+            var wasOpen = arc.classList.contains("open");
+            document.querySelectorAll(".arc").forEach(function (a) {
+              a.classList.remove("open");
+              a.querySelector(".arc-head").setAttribute(
+                "aria-expanded",
+                "false",
+              );
+            });
+            if (!wasOpen) {
+              arc.classList.add("open");
+              h.setAttribute("aria-expanded", "true");
+            }
+          });
+        });
+        // ---- snow / ice particles on hero canvas ----
+        var canvas = document.getElementById("snow");
+        var ctx = canvas.getContext("2d");
+        var particles = [];
+        var reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        function resize() {
+          var hero = document.querySelector(".hero");
+          canvas.width = hero.offsetWidth;
+          canvas.height = hero.offsetHeight;
+        }
+        function makeParticles() {
+          particles = [];
+          var count = Math.min(90, Math.floor(canvas.width / 14));
+          for (var i = 0; i < count; i++) {
+            particles.push({
+              x: Math.random() * canvas.width,
+              y: Math.random() * canvas.height,
+              r: Math.random() * 2 + 0.6,
+              s: Math.random() * 0.5 + 0.15,
+              drift: Math.random() * 0.6 - 0.3,
+              o: Math.random() * 0.45 + 0.35,
+            });
+          }
+        }
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = particleColor;
+          particles.forEach(function (p) {
+            ctx.globalAlpha = p.o;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+            if (!reduceMotion) {
+              p.y += p.s;
+              p.x += p.drift;
+              if (p.y > canvas.height) {
+                p.y = -4;
+                p.x = Math.random() * canvas.width;
+              }
+            }
+          });
+          ctx.globalAlpha = 1;
+          if (!reduceMotion) {
+            requestAnimationFrame(draw);
+          }
+        }
+        window.addEventListener("resize", function () {
+          resize();
+          makeParticles();
+        });
+        resize();
+        makeParticles();
+        draw();
+        // ---- powers wheel ----
+        var powers = [
+          {
+            key: "agua",
+            label: "Agua",
+            color: "#5aa9d6",
+            desc: "Se manifiesta como hielo, agua líquida o vapor; la forma inicial depende del entorno del Marcado. Es el don de Ayla, que empieza dominando el hielo y aprende, con esfuerzo, a controlar el agua en su estado líquido.",
+            evo: "Hielo o agua → Vapor → Control del clima",
+            price:
+              "Agotamiento físico; dificultad para sostener formas complejas",
+          },
+          {
+            key: "fuego",
+            label: "Fuego",
+            color: "#e2673a",
+            desc: "Control de llamas y calor, capaz de evolucionar hacia un fuego «oscuro» de naturaleza distinta. Es la Marca original de El Rastreador, y la primera que roba mediante el Ritual de Transferencia.",
+            evo: "Llamas básicas → Control del calor → Fuego oscuro",
+            price: "Quemaduras por sobrecarga; agotamiento severo",
+          },
+          {
+            key: "tierra",
+            label: "Tierra",
+            color: "#cfae7a",
+            desc: "Permite mover rocas, minerales y suelo, hasta el punto de provocar pequeños terremotos localizados. Es el don de Daren, que aprende a usarlo con precisión quirúrgica en combate.",
+            evo: "Mover piedras → Levantar muros → Terremotos localizados",
+            price: "Agotamiento físico; riesgo de colapsos incontrolados",
+          },
+          {
+            key: "aire",
+            label: "Aire",
+            color: "#cfd6da",
+            desc: "Control de vientos y corrientes, mencionado en la novela como uno de los dones más raros y menos explorados entre los personajes principales.",
+            evo: "Ráfagas → Control del clima → Vuelo",
+            price: "Dificultad respiratoria; agotamiento",
+          },
+          {
+            key: "vida",
+            label: "Vida",
+            color: "#6fbf73",
+            desc: "Acelera el crecimiento de plantas, cura heridas y permite sentir a los seres vivos cercanos. Es el don de Kael, quien descubre que cada curación profunda le transfiere parte del daño que sana.",
+            evo: "Plantas → Curación → Percepción de vida → Decadencia",
+            price:
+              "Transferencia de heridas; agotamiento extremo; riesgo mortal",
+          },
+          {
+            key: "mente",
+            label: "Mente",
+            color: "#a66fe0",
+            desc: "Lectura de pensamientos, proyección de emociones y, en su forma más desarrollada, control mental. Es el don dormido de Lyra, que tarda buena parte del libro en aprender a nombrarlo.",
+            evo: "Empatía → Lectura de mentes → Control mental → Proyección de emociones",
+            price: "Agotamiento mental; riesgo de perder la propia identidad",
+          },
+        ];
+        var svg = document.getElementById("wheel");
+        var cx = 150,
+          cy = 150,
+          rInner = 62,
+          rOuter = 140;
+        function polar(cx, cy, r, angle) {
+          var a = ((angle - 90) * Math.PI) / 180;
+          return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+        }
+        function arcPath(startA, endA) {
+          var p1 = polar(cx, cy, rOuter, startA);
+          var p2 = polar(cx, cy, rOuter, endA);
+          var p3 = polar(cx, cy, rInner, endA);
+          var p4 = polar(cx, cy, rInner, startA);
+          var large = endA - startA > 180 ? 1 : 0;
+          return (
+            "M " +
+            p1[0] +
+            " " +
+            p1[1] +
+            " A " +
+            rOuter +
+            " " +
+            rOuter +
+            " 0 " +
+            large +
+            " 1 " +
+            p2[0] +
+            " " +
+            p2[1] +
+            " L " +
+            p3[0] +
+            " " +
+            p3[1] +
+            " A " +
+            rInner +
+            " " +
+            rInner +
+            " 0 " +
+            large +
+            " 0 " +
+            p4[0] +
+            " " +
+            p4[1] +
+            " Z"
+          );
+        }
+        var seg = 360 / powers.length;
+        var svgns = "http://www.w3.org/2000/svg";
+        powers.forEach(function (p, i) {
+          var start = i * seg,
+            end = (i + 1) * seg;
+          var path = document.createElementNS(svgns, "path");
+          path.setAttribute("d", arcPath(start, end));
+          path.setAttribute("fill", p.color);
+          path.setAttribute("class", "wheel-seg");
+          path.setAttribute("stroke-width", "2");
+          path.setAttribute("tabindex", "0");
+          path.setAttribute("role", "button");
+          path.setAttribute("aria-label", p.label);
+          path.dataset.key = p.key;
+          svg.appendChild(path);
+          var mid = start + seg / 2;
+          var lp = polar(cx, cy, (rInner + rOuter) / 2, mid);
+          var text = document.createElementNS(svgns, "text");
+          text.setAttribute("x", lp[0]);
+          text.setAttribute("y", lp[1]);
+          text.setAttribute("text-anchor", "middle");
+          text.setAttribute("dominant-baseline", "middle");
+          text.setAttribute("class", "wheel-seg-text");
+          text.textContent = p.label;
+          svg.appendChild(text);
+        });
+        var detail = document.getElementById("powerDetail");
+        function renderPower(key) {
+          var p =
+            powers.find(function (x) {
+              return x.key === key;
+            }) || powers[0];
+          detail.innerHTML =
+            '<div class="p-eyebrow" style="color:' +
+            p.color +
+            '">Marca de ' +
+            p.label +
+            "</div>" +
+            "<h3>" +
+            p.label +
+            "</h3>" +
+            "<p>" +
+            p.desc +
+            "</p>" +
+            '<div class="p-row"><span class="p-chip">Evolución: ' +
+            p.evo +
+            "</span></div>" +
+            '<div class="p-row"><span class="p-chip">Precio: ' +
+            p.price +
+            "</span></div>";
+          svg.querySelectorAll(".wheel-seg").forEach(function (s) {
+            s.classList.toggle("active", s.dataset.key === key);
+          });
+        }
+        svg.querySelectorAll(".wheel-seg").forEach(function (s) {
+          s.addEventListener("click", function () {
+            renderPower(s.dataset.key);
+          });
+          s.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              renderPower(s.dataset.key);
+            }
+          });
+        });
+        renderPower("agua");
+      })();
+
+      // ---- format switch: Kindle / Tapa blanda ----
+      var editions = {
+        kindle: {
+          format: "Edición digital Kindle",
+          price: "4,99 €",
+          pages: "321",
+          age: "A partir de 12 años",
+          language: "Español",
+          image: "elyndra-portada.png",
+          ctaLabel: "Comprar en Amazon",
+          note: "Disponible para leer en cualquier dispositivo con la app gratuita de Kindle.",
+          url: "https://www.amazon.es/dp/B0H98WQMB9",
+        },
+        paperback: {
+          format: "Edición tapa blanda",
+          price: "11,87 €",
+          pages: "251",
+          age: "A partir de 12 años",
+          language: "Español",
+          image: "elyndra-portada.png",
+          ctaLabel: "Comprar en Amazon",
+          note: "Edición física en tapa blanda, enviada directamente por Amazon.",
+          url: "https://www.amazon.es/dp/B0HC48FK8D",
+        },
+      };
+      var tabKindle = document.getElementById("tabKindle");
+      var tabPaperback = document.getElementById("tabPaperback");
+      var buyCoverImg = document.getElementById("buyCoverImg");
+      var buyFormat = document.getElementById("buyFormat");
+      var buyPrice = document.getElementById("buyPrice");
+      var buyCtaLink = document.getElementById("buyCtaLink");
+      var buyPages = document.getElementById("buyPages");
+      var buyAge = document.getElementById("buyAge");
+      var buyLanguage = document.getElementById("buyLanguage");
+      var buyCtaLabel = document.getElementById("buyCtaLabel");
+      var buyNote = document.getElementById("buyNote");
+      function renderEdition(key) {
+        var e = editions[key];
+        if (!e) return;
+        buyCoverImg.src = e.image;
+        buyCoverImg.alt = "Portada de El secreto de Elyndra — " + e.format;
+        buyFormat.textContent = e.format;
+        buyPrice.textContent = e.price;
+        buyPages.textContent = e.pages;
+        buyAge.textContent = e.age;
+        buyLanguage.textContent = e.language;
+        buyCtaLabel.textContent = e.ctaLabel;
+        buyCtaLink.href = e.url;
+        buyNote.textContent = e.note;
+        tabKindle.classList.toggle("active", key === "kindle");
+        tabKindle.setAttribute("aria-selected", key === "kindle");
+        tabPaperback.classList.toggle("active", key === "paperback");
+        tabPaperback.setAttribute("aria-selected", key === "paperback");
+      }
+      tabPaperback.addEventListener("click", function () {
+        renderEdition("paperback");
+      });
+      tabKindle.addEventListener("click", function () {
+        renderEdition("kindle");
+      });
+      renderEdition("paperback");
+
+      (function () {
+        const API_BASE = "/api/ideas";
+        const PAGE_SIZE = 5;
+        const VOTED_KEY = "elyndra-voted-ideas";
+        const SUBMITTED_KEY = "elyndra-submitted-ideas";
+        const OWN_IDEAS_KEY = "elyndra-own-ideas";
+        const MAX_SUBMISSIONS = 5;
+
+        let allIdeas = [];
+        let currentPage = 0;
+        let justSubmittedId = null;
+
+        function getVoted() {
+          try {
+            return JSON.parse(localStorage.getItem(VOTED_KEY)) || [];
+          } catch (e) {
+            return [];
+          }
+        }
+        function addVoted(id) {
+          const v = getVoted();
+          v.push(id);
+          localStorage.setItem(VOTED_KEY, JSON.stringify(v));
+        }
+        function removeVoted(id) {
+          const v = getVoted().filter(function (x) {
+            return x !== id;
+          });
+          localStorage.setItem(VOTED_KEY, JSON.stringify(v));
+        }
+        function getOwnIdeas() {
+          try {
+            return JSON.parse(localStorage.getItem(OWN_IDEAS_KEY)) || [];
+          } catch (e) {
+            return [];
+          }
+        }
+        function addOwnIdea(id) {
+          const o = getOwnIdeas();
+          o.push(id);
+          localStorage.setItem(OWN_IDEAS_KEY, JSON.stringify(o));
+        }
+        function getSubmittedCount() {
+          return parseInt(localStorage.getItem(SUBMITTED_KEY) || "0", 10);
+        }
+        function incrementSubmitted() {
+          localStorage.setItem(SUBMITTED_KEY, String(getSubmittedCount() + 1));
+        }
+        function escapeHTML(str) {
+          const div = document.createElement("div");
+          div.textContent = str;
+          return div.innerHTML;
+        }
+
+        async function loadIdeas() {
+          try {
+            const res = await fetch(API_BASE);
+            allIdeas = await res.json();
+          } catch (e) {
+            allIdeas = [];
+          }
+          currentPage = 0;
+          renderIdeas();
+        }
+
+        function renderIdeas() {
+          const listEl = document.getElementById("ideasList");
+          const pageInfo = document.getElementById("ideasPageInfo");
+          const prevBtn = document.getElementById("prevIdeas");
+          const nextBtn = document.getElementById("nextIdeas");
+          if (!listEl) return;
+
+          const voted = getVoted();
+          const totalPages = Math.max(
+            1,
+            Math.ceil(allIdeas.length / PAGE_SIZE),
+          );
+          currentPage = Math.min(currentPage, totalPages - 1);
+
+          const start = currentPage * PAGE_SIZE;
+          const pageItems = allIdeas.slice(start, start + PAGE_SIZE);
+
+          listEl.innerHTML = "";
+          if (pageItems.length === 0) {
+            listEl.innerHTML =
+              '<p style="color:var(--text-dim)">Todavía no hay ideas. ¡Sé el primero en proponer una!</p>';
+          }
+
+          const ownIdeas = getOwnIdeas();
+          pageItems.forEach(function (idea) {
+            const hasVoted = voted.indexOf(idea.id) !== -1;
+            const isOwn = ownIdeas.indexOf(idea.id) !== -1;
+            const card = document.createElement("div");
+            card.className = "idea-card";
+            const isAutoVoted = idea.id === justSubmittedId;
+            card.innerHTML =
+              '<div class="idea-content">' +
+              '<div class="idea-name">' +
+              escapeHTML(idea.name) +
+              "</div>" +
+              '<div class="idea-text">' +
+              escapeHTML(idea.idea) +
+              "</div>" +
+              "</div>" +
+              '<button class="idea-vote-btn' +
+              (hasVoted ? " voted" : "") +
+              (isOwn ? " own-idea" : "") +
+              (isAutoVoted ? " auto-voted" : "") +
+              '" data-id="' +
+              idea.id +
+              '" data-own="' +
+              (isOwn ? "1" : "0") +
+              '" title="' +
+              (isOwn
+                ? "No puedes quitar el voto de tu propia idea"
+                : hasVoted
+                  ? "Quitar voto"
+                  : "Votar") +
+              '">' +
+              '<i class="fa-solid fa-arrow-up"></i>' +
+              '<span class="votes-count">' +
+              idea.votes +
+              "</span>" +
+              "</button>";
+            listEl.appendChild(card);
+            if (isAutoVoted) {
+              const floatEl = document.createElement("span");
+              floatEl.className = "vote-float";
+              floatEl.textContent = "+1 voto automático";
+              card.appendChild(floatEl);
+              floatEl.addEventListener("animationend", function () {
+                floatEl.remove();
+              });
+            }
+          });
+
+          justSubmittedId = null;
+
+          pageInfo.textContent =
+            "Página " + (currentPage + 1) + " de " + totalPages;
+          prevBtn.disabled = currentPage === 0;
+          nextBtn.disabled = currentPage >= totalPages - 1;
+
+          listEl.querySelectorAll(".idea-vote-btn").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              if (btn.dataset.own === "1") return;
+              const id = btn.dataset.id;
+              if (getVoted().indexOf(id) !== -1) {
+                unvoteIdea(id);
+              } else {
+                voteIdea(id);
+              }
+            });
+          });
+        }
+
+        async function voteIdea(id) {
+          try {
+            const res = await fetch(API_BASE + "/" + id + "/vote", {
+              method: "POST",
+            });
+            if (!res.ok) return;
+            const updated = await res.json();
+            addVoted(id);
+            const idx = allIdeas.findIndex(function (i) {
+              return i.id === id;
+            });
+            if (idx !== -1) allIdeas[idx] = updated;
+            allIdeas.sort(function (a, b) {
+              return b.votes - a.votes;
+            });
+            renderIdeas();
+          } catch (e) {}
+        }
+
+        async function unvoteIdea(id) {
+          try {
+            const res = await fetch(API_BASE + "/" + id + "/unvote", {
+              method: "POST",
+            });
+            if (!res.ok) return;
+            const updated = await res.json();
+            removeVoted(id);
+            const idx = allIdeas.findIndex(function (i) {
+              return i.id === id;
+            });
+            if (idx !== -1) allIdeas[idx] = updated;
+            allIdeas.sort(function (a, b) {
+              return b.votes - a.votes;
+            });
+            renderIdeas();
+          } catch (e) {}
+        }
+
+        const overlay = document.getElementById("ideaModalOverlay");
+        const openBtn = document.getElementById("openIdeaForm");
+        const closeBtn = document.getElementById("closeIdeaForm");
+        const form = document.getElementById("ideaForm");
+        const errorEl = document.getElementById("ideaError");
+
+        const ideaTextArea = document.getElementById("ideaText");
+        const charCountEl = document.getElementById("ideaCharCount");
+        if (ideaTextArea && charCountEl) {
+          ideaTextArea.addEventListener("input", function () {
+            const len = ideaTextArea.value.length;
+            const max = 300;
+            charCountEl.textContent = len + " / " + max;
+            charCountEl.classList.toggle("limit-reached", len >= max);
+          });
+        }
+
+        function openModal() {
+          errorEl.textContent = "";
+          if (getSubmittedCount() >= MAX_SUBMISSIONS) {
+            errorEl.textContent =
+              "Ya has enviado el máximo de " + MAX_SUBMISSIONS + " ideas.";
+            form.querySelector('button[type="submit"]').disabled = true;
+          } else {
+            form.querySelector('button[type="submit"]').disabled = false;
+          }
+          overlay.classList.add("open");
+        }
+        function closeModal() {
+          overlay.classList.remove("open");
+        }
+
+        if (openBtn) openBtn.addEventListener("click", openModal);
+        if (closeBtn) closeBtn.addEventListener("click", closeModal);
+        if (overlay)
+          overlay.addEventListener("click", function (e) {
+            if (e.target === overlay) closeModal();
+          });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && overlay.classList.contains("open")) {
+            closeModal();
+          }
+        });
+
+        const prevIdeasBtn = document.getElementById("prevIdeas");
+        const nextIdeasBtn = document.getElementById("nextIdeas");
+        if (prevIdeasBtn)
+          prevIdeasBtn.addEventListener("click", function () {
+            if (currentPage > 0) {
+              currentPage--;
+              renderIdeas();
+            }
+          });
+        if (nextIdeasBtn)
+          nextIdeasBtn.addEventListener("click", function () {
+            currentPage++;
+            renderIdeas();
+          });
+
+        if (form) {
+          form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            if (getSubmittedCount() >= MAX_SUBMISSIONS) {
+              errorEl.textContent =
+                "Ya has enviado el máximo de " + MAX_SUBMISSIONS + " ideas.";
+              return;
+            }
+            const name = document.getElementById("ideaName").value.trim();
+            const ideaText = document.getElementById("ideaText").value.trim();
+            if (!ideaText) {
+              errorEl.textContent = "Escribe una idea antes de enviarla.";
+              return;
+            }
+            try {
+              const res = await fetch(API_BASE, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: name, idea: ideaText }),
+              });
+              if (!res.ok) {
+                const data = await res.json().catch(function () {
+                  return {};
+                });
+                errorEl.textContent =
+                  data.error || "No se pudo enviar la idea.";
+                return;
+              }
+              const created = await res.json();
+              addVoted(created.id);
+              addOwnIdea(created.id);
+              justSubmittedId = created.id;
+              incrementSubmitted();
+              form.reset();
+              closeModal();
+              await loadIdeas();
+            } catch (err) {
+              errorEl.textContent = "Error de conexión. Inténtalo de nuevo.";
+            }
+          });
+        }
+
+        loadIdeas();
+      })();
+
+      (function () {
+        var input = document.getElementById("karthorInput");
+        var output = document.getElementById("karthorOutput");
+        var PLACEHOLDER_LOWER = "\u0001";
+        var PLACEHOLDER_UPPER = "\u0002";
+        function stripDiacritics(str) {
+          var protectedStr = str
+            .replace(/ñ/g, PLACEHOLDER_LOWER)
+            .replace(/Ñ/g, PLACEHOLDER_UPPER);
+          var cleaned = protectedStr
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+          return cleaned
+            .replace(new RegExp(PLACEHOLDER_LOWER, "g"), "ñ")
+            .replace(new RegExp(PLACEHOLDER_UPPER, "g"), "Ñ");
+        }
+        if (input && output) {
+          input.addEventListener("input", function () {
+            output.textContent = stripDiacritics(input.value);
+          });
+
+          output.textContent = stripDiacritics(input.value);
+        }
+      })();
+      (function () {
+        var toggleBtn = document.getElementById("karthorAlphabetToggle");
+        var panel = document.getElementById("karthorAlphabet");
+        var grid = document.getElementById("karthorAlphabetGrid");
+        var grid1 = document.getElementById("karthorNumberGrid");
+        var alphabet = "abcdefghijklmnñopqrstuvwxyz".split("");
+        var numbers = "1234567890".split("");
+        if (grid) {
+          alphabet.forEach(function (letter) {
+            var cell = document.createElement("div");
+            cell.className = "karthor-letter";
+            cell.innerHTML =
+              '<span class="rune">' +
+              letter +
+              "</span>" +
+              '<span class="letter">' +
+              letter +
+              "</span>";
+            grid.appendChild(cell);
+          });
+        }
+        if (grid1) {
+          numbers.forEach(function (number) {
+            var cell = document.createElement("div");
+            cell.className = "karthor-letter";
+            cell.innerHTML =
+              '<span class="rune">' +
+              number +
+              "</span>" +
+              '<span class="letter">' +
+              number +
+              "</span>";
+            grid1.appendChild(cell);
+          });
+        }
+        if (toggleBtn && panel) {
+          function syncPanelHeight() {
+            if (panel.classList.contains("open")) {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+          }
+          toggleBtn.addEventListener("click", function () {
+            var isOpen = panel.classList.toggle("open");
+            toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            panel.style.maxHeight = isOpen ? panel.scrollHeight + "px" : "";
+          });
+          window.addEventListener("resize", syncPanelHeight);
+        }
+      })();
+
+      function createZoomViewer(opts) {
+        var openBtn = opts.openBtnId
+          ? document.getElementById(opts.openBtnId)
+          : null;
+        var overlay = document.getElementById(opts.overlayId);
+        var closeBtn = document.getElementById(opts.closeBtnId);
+        var image = document.getElementById(opts.imageId);
+        var container = document.getElementById(opts.containerId);
+
+        var MIN_ZOOM = 1;
+        var MAX_ZOOM = 4;
+        var CLICK_ZOOM = 2.2;
+        var STEP = 0.3;
+        var zoomLevel = 1;
+        var baseWidth = 0;
+        var baseHeight = 0;
+        var isPanning = false;
+        var panStartX = 0;
+        var panStartY = 0;
+
+        function isOpen() {
+          return overlay.classList.contains("open");
+        }
+
+        function captureBaseSize() {
+          var rect = image.getBoundingClientRect();
+          baseWidth = rect.width;
+          baseHeight = rect.height;
+        }
+
+        function applyZoomAt(newLevelRaw, clientX, clientY) {
+          var newLevel = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, newLevelRaw));
+          if (newLevel === zoomLevel) return;
+          if (zoomLevel === MIN_ZOOM) captureBaseSize();
+          var containerRect = container.getBoundingClientRect();
+          var imgRectBefore = image.getBoundingClientRect();
+          var ratioX = Math.min(
+            1,
+            Math.max(0, (clientX - imgRectBefore.left) / imgRectBefore.width),
+          );
+          var ratioY = Math.min(
+            1,
+            Math.max(0, (clientY - imgRectBefore.top) / imgRectBefore.height),
+          );
+          var newWidth = baseWidth * newLevel;
+          var newHeight = baseHeight * newLevel;
+          var marginLeft = Math.max(0, (containerRect.width - newWidth) / 2);
+          var marginTop = Math.max(0, (containerRect.height - newHeight) / 2);
+
+          if (newLevel > MIN_ZOOM) {
+            image.style.maxWidth = "none";
+            image.style.maxHeight = "none";
+            image.style.width = newWidth + "px";
+            image.style.height = newHeight + "px";
+            image.style.marginLeft = marginLeft + "px";
+            image.style.marginTop = marginTop + "px";
+          } else {
+            image.style.maxWidth = "";
+            image.style.maxHeight = "";
+            image.style.width = "";
+            image.style.height = "";
+            image.style.marginLeft = "";
+            image.style.marginTop = "";
+          }
+
+          var desiredScreenLeft = clientX - ratioX * newWidth;
+          var desiredScreenTop = clientY - ratioY * newHeight;
+          var scrollLeft = containerRect.left + marginLeft - desiredScreenLeft;
+          var scrollTop = containerRect.top + marginTop - desiredScreenTop;
+          var maxScrollLeft = Math.max(0, newWidth - containerRect.width);
+          var maxScrollTop = Math.max(0, newHeight - containerRect.height);
+
+          container.scrollLeft = Math.min(
+            maxScrollLeft,
+            Math.max(0, scrollLeft),
+          );
+          container.scrollTop = Math.min(maxScrollTop, Math.max(0, scrollTop));
+
+          zoomLevel = newLevel;
+          image.classList.toggle("zoomed", zoomLevel > MIN_ZOOM);
+          container.classList.toggle("is-zoomed", zoomLevel > MIN_ZOOM);
+        }
+
+        function zoomAtCenter(newLevel) {
+          var rect = container.getBoundingClientRect();
+          applyZoomAt(
+            newLevel,
+            rect.left + rect.width / 2,
+            rect.top + rect.height / 2,
+          );
+        }
+
+        function resetZoom() {
+          zoomLevel = MIN_ZOOM;
+          image.style.maxWidth = "";
+          image.style.maxHeight = "";
+          image.style.width = "";
+          image.style.height = "";
+          image.style.marginLeft = "";
+          image.style.marginTop = "";
+          image.classList.remove("zoomed");
+          container.classList.remove("is-zoomed");
+          container.scrollLeft = 0;
+          container.scrollTop = 0;
+        }
+
+        function open() {
+          overlay.classList.add("open");
+          document.body.classList.add("no-scroll");
+          document.documentElement.classList.add("map-open");
+          resetZoom();
+        }
+
+        function close() {
+          overlay.classList.remove("open");
+          document.documentElement.classList.remove("map-open");
+          resetZoom();
+          if (typeof opts.onClose === "function") {
+            opts.onClose();
+          } else {
+            document.body.classList.remove("no-scroll");
+          }
+        }
+
+        if (openBtn) openBtn.addEventListener("click", open);
+        if (closeBtn) closeBtn.addEventListener("click", close);
+        if (overlay) {
+          overlay.addEventListener("click", function (e) {
+            if (e.target === overlay) close();
+          });
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && isOpen()) {
+            e.stopImmediatePropagation();
+            close();
+          }
+        });
+
+        document.addEventListener(
+          "keydown",
+          function (e) {
+            if (!isOpen()) return;
+            if (!(e.ctrlKey || e.metaKey)) return;
+            if (e.key === "+" || e.key === "=") {
+              e.preventDefault();
+              zoomAtCenter(zoomLevel + STEP);
+            } else if (e.key === "-" || e.key === "_") {
+              e.preventDefault();
+              zoomAtCenter(zoomLevel - STEP);
+            } else if (e.key === "0") {
+              e.preventDefault();
+              resetZoom();
+            }
+          },
+          { passive: false },
+        );
+
+        if (overlay) {
+          overlay.addEventListener(
+            "wheel",
+            function (e) {
+              if (!isOpen()) return;
+              if (!(e.ctrlKey || e.metaKey)) return;
+              e.preventDefault();
+              applyZoomAt(
+                zoomLevel + (e.deltaY < 0 ? STEP : -STEP),
+                e.clientX,
+                e.clientY,
+              );
+            },
+            { passive: false },
+          );
+        }
+
+        document.addEventListener(
+          "wheel",
+          function (e) {
+            if (!isOpen()) return;
+            if (e.ctrlKey || e.metaKey) return;
+            if (Math.abs(e.deltaX) > 0) {
+              e.preventDefault();
+              container.scrollLeft += e.deltaX;
+              container.scrollTop += e.deltaY;
+            }
+          },
+          { passive: false },
+        );
+
+        if (image) {
+          image.addEventListener("click", function (e) {
+            if (e.button !== 0) return;
+            var target = zoomLevel > MIN_ZOOM ? MIN_ZOOM : CLICK_ZOOM;
+            applyZoomAt(target, e.clientX, e.clientY);
+          });
+        }
+
+        if (image) {
+          image.addEventListener("mousedown", function (e) {
+            if (e.button !== 2) return;
+            if (zoomLevel <= MIN_ZOOM) return;
+            isPanning = true;
+            panStartX = e.clientX;
+            panStartY = e.clientY;
+            image.classList.add("panning");
+            e.preventDefault();
+          });
+        }
+
+        window.addEventListener("mousemove", function (e) {
+          if (!isPanning) return;
+          var dx = e.clientX - panStartX;
+          var dy = e.clientY - panStartY;
+          container.scrollLeft -= dx;
+          container.scrollTop -= dy;
+          panStartX = e.clientX;
+          panStartY = e.clientY;
+        });
+
+        window.addEventListener("mouseup", function (e) {
+          if (isPanning && e.button === 2) {
+            isPanning = false;
+            image.classList.remove("panning");
+          }
+        });
+
+        if (image) {
+          image.addEventListener("contextmenu", function (e) {
+            if (zoomLevel > MIN_ZOOM) e.preventDefault();
+          });
+        }
+
+        // Se devuelve para poder usarlo desde fuera (por ejemplo, desde el modal de personajes)
+        return {
+          open: open,
+          close: close,
+          resetZoom: resetZoom,
+          isOpen: isOpen,
+        };
+      }
+
+      var mapViewer = createZoomViewer({
+        overlayId: "mapOverlay",
+        containerId: "mapScrollContainer",
+        imageId: "mapImage",
+        closeBtnId: "closeMapBtn",
+        openBtnId: "openMapBtn",
+      });
+
+      var charImageViewer = createZoomViewer({
+        overlayId: "charImageOverlay",
+        containerId: "charImageScrollContainer",
+        imageId: "charImagePreview",
+        closeBtnId: "closeCharImageBtn",
+        onClose: function () {
+          var charModalOverlay = document.getElementById("charModalOverlay");
+          if (
+            !charModalOverlay ||
+            !charModalOverlay.classList.contains("open")
+          ) {
+            document.body.classList.remove("no-scroll");
+          }
+        },
+      });
+
+      (function () {
+        var characters = {
+          ayla: {
+            name: "Ayla",
+            role: "Protagonista",
+            image: "/img/Ayla.png",
+            desc: "Piel muy pálida, casi blanca, de quien nunca ha visto el sol. Cabello rubio, largo y ondulado, y una mirada de un azul intenso, casi glaciar. Sobre el hombro izquierdo lleva su Marca, una compleja figura azul, blanca y plateada que recuerda a cristales de hielo. Tras diecisiete años encerrada en una torre, es curiosa hasta el extremo y devora cada experiencia nueva como si fuera la primera vez que vive. Es empática y no soporta la injusticia, aunque desconfía por instinto y le cuesta abrirse a los demás. Bajo esa curiosidad esconde una determinación silenciosa y firme: la de no volver jamás atrás.",
+          },
+          kael: {
+            name: "Kael",
+            role: "Compañero de viaje",
+            image: "/img/Kael.png",
+            desc: "Cabello oscuro y despeinado, mirada verde y alerta, siempre atento a las salidas de cualquier lugar antes de sentirse a salvo. Su Marca, de tonos verdes y dorados, se extiende por su cuello. Acostumbrado a esconderse durante años, es cauteloso y tranquilo por naturaleza, aunque tiene un genio que se le escapa cuando pierde el control de sus emociones. Es leal y protector con quienes le importan, capaz de llegar al límite de sus fuerzas por salvar a otro. Guarda una herida antigua —la ausencia de sus padres— que lo empuja a seguir buscando un lugar al que llamar hogar.",
+          },
+          daren: {
+            name: "Daren",
+            role: "Compañero de viaje",
+            image: "/img/Daren.png",
+            desc: "Rasgos marcados y mirada oscura, siempre en movimiento, observando cada rincón antes de bajar la guardia. Su Marca, gris y plateada, parece formada por fragmentos de roca entrelazados y se manifiesta en su capacidad de mover piedras a su alrededor. Tiene un sentido del humor seco y bromea incluso cuando está nervioso, como una forma de defenderse. Nunca logra relajarse del todo: siempre vigila, siempre escucha, marcado por meses de huida de un perseguidor implacable. Bajo esa fachada bromista se esconde alguien profundamente asustado, pero también agradecido y leal en cuanto alguien le tiende la mano.",
+          },
+          lyra: {
+            name: "Lyra",
+            role: "Compañera de viaje",
+            image: "/img/Lyra.png",
+            desc: "Cabello oscuro y alborotado, y una enorme Marca de tonos dorados y violetas que le cubre todo el brazo derecho. Su mirada suele estar baja y su cuerpo encogido, reflejo de años de maltrato y esclavitud. Es asustadiza y se sobresalta con facilidad, tarda en sentirse segura junto a los demás. Todavía no conoce su propio poder, lo que la hace sentirse incompleta. Bajo el miedo esconde a alguien que anhela desesperadamente pertenecer a algo, y que poco a poco, rodeada de cariño, aprende a confiar y a sentirse libre por primera vez en su vida.",
+          },
+          norik: {
+            name: "Nórik",
+            role: "El lobo",
+            image: "/img/Norik.png",
+            desc: "Lobo de pelaje gris, del color de las nubes de tormenta, con mirada dorada y una cicatriz visible en una de sus patas delanteras, recuerdo de la herida con la que Ayla lo encontró. Su porte es imponente y sereno, el de una criatura que parece saber siempre más de lo que muestra. Silencioso y sabio, se convierte en su protector incondicional, dispuesto a sacrificarlo todo por ella y sus amigos.",
+          },
+          rastreador: {
+            name: "El Rastreador",
+            role: "Antagonista",
+            image: "/img/Rastreador.png",
+            desc: "Envuelto siempre en una capa negra que cubre por completo su cuerpo, oculta su rostro tras una máscara de metal lisa y sin rasgos, fría como su voz. En sus manos brotan llamas de dos colores: unas naranjas tan intensas que casi parecen blancas, y otras oscuras, casi negras, fruto de una Marca que no le pertenece por nacimiento, sino robada. Bajo la máscara, un rostro marcado por cicatrices, un ojo gris y frío, y una cuenca vacía donde antes hubo otro. Nadie que ha visto su verdadero rostro ha vivido para describirlo del todo. Implacable, calculador y letal, lleva años persiguiendo a los Marcados, dispuesto a cualquier cosa por descubrir el secreto de las Marcas múltiples. Habla con una calma inquietante, casi paternal, incluso en mitad de la destrucción que provoca. Bajo esa frialdad se adivina algo roto: una obsesión nacida de un poder arrebatado a costa de perderse a sí mismo.",
+          },
+        };
+
+        var overlay = document.getElementById("charModalOverlay");
+        var closeBtn = document.getElementById("closeCharModal");
+        var imgEl = document.getElementById("charModalImg");
+        var nameEl = document.getElementById("charModalName");
+        var roleEl = document.getElementById("charModalRole");
+        var descEl = document.getElementById("charModalDesc");
+        var lastFocused = null;
+        var charImagePreview = document.getElementById("charImagePreview");
+        var charImageInfoPopup = document.getElementById("charImageInfoPopup");
+        var charModalInfoPopup = document.getElementById("charModalInfoPopup");
+
+        function buildImageInfoText(charName) {
+          return (
+            "Cada lector puede imaginar a " +
+            charName +
+            " a su manera. Esta imagen es una interpretación generada por una IA " +
+            "de generación de imágenes a partir del texto de la descripción del personaje."
+          );
+        }
+
+        if (imgEl) {
+          imgEl.addEventListener("click", function () {
+            if (!charImagePreview) return;
+            charImagePreview.src = imgEl.src;
+            charImagePreview.alt = imgEl.alt;
+            if (charImageInfoPopup) {
+              charImageInfoPopup.textContent = buildImageInfoText(
+                nameEl.textContent,
+              );
+            }
+            charImageViewer.open();
+          });
+        }
+
+        function openCharModal(key) {
+          var c = characters[key];
+          if (!c || !overlay) return;
+          imgEl.src = c.image;
+          imgEl.alt = c.name;
+          nameEl.textContent = c.name;
+          roleEl.textContent = c.role;
+          descEl.textContent = c.desc;
+          if (charModalInfoPopup) {
+            charModalInfoPopup.textContent = buildImageInfoText(c.name);
+          }
+          lastFocused = document.activeElement;
+          overlay.classList.add("open");
+          document.body.classList.add("no-scroll");
+          if (closeBtn) closeBtn.focus();
+        }
+
+        function closeCharModal() {
+          if (!overlay) return;
+          overlay.classList.remove("open");
+          document.body.classList.remove("no-scroll");
+          if (lastFocused) lastFocused.focus();
+        }
+
+        var grid = document.querySelector("#personajes .char-grid");
+        if (grid) {
+          grid.addEventListener("click", function (e) {
+            var card = e.target.closest("[data-character]");
+            if (card) openCharModal(card.dataset.character);
+          });
+          grid.addEventListener("keydown", function (e) {
+            if (e.key !== "Enter" && e.key !== " ") return;
+            var card = e.target.closest("[data-character]");
+            if (card) {
+              e.preventDefault();
+              openCharModal(card.dataset.character);
+            }
+          });
+        }
+
+        if (closeBtn) closeBtn.addEventListener("click", closeCharModal);
+        if (overlay) {
+          overlay.addEventListener("click", function (e) {
+            if (e.target === overlay) closeCharModal();
+          });
+        }
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            overlay &&
+            overlay.classList.contains("open") &&
+            !(charImageViewer && charImageViewer.isOpen())
+          ) {
+            closeCharModal();
+          }
+        });
+      })();
+
+      function setupInfoTooltip(wrapId) {
+        var wrap = document.getElementById(wrapId);
+        if (!wrap) return;
+        var btn = wrap.querySelector(".info-tooltip-btn");
+        if (btn) {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            wrap.classList.toggle("open");
+          });
+        }
+        document.addEventListener("click", function (e) {
+          if (!wrap.contains(e.target)) {
+            wrap.classList.remove("open");
+          }
+        });
+      }
+      setupInfoTooltip("charImageInfoWrap");
+      setupInfoTooltip("charModalInfoWrap");
+    </script>
+    <script src="easter-egg.js?v=2" defer></script>
+  </body>
+</html>
